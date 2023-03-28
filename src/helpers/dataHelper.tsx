@@ -1,6 +1,5 @@
 import { generatePath } from '@remix-run/router';
 import { Feed } from 'feed';
-import MarkdownIt from 'markdown-it';
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { dirname, resolve } from 'node:path';
@@ -9,6 +8,7 @@ import sanitizeHtml from 'sanitize-html';
 import { blogUrl } from '@/config/website';
 import { AUTHORIZED_LANGUAGES, CATEGORIES, PATHS } from '@/constants';
 import { getPathFile } from '@/helpers/assetHelper';
+import { markdownToHtml } from '@/helpers/markdownToHtmlHelper';
 import { AuthorType, PostType } from '@/types';
 
 const readingTimeToString = (numberOfWords: number): string => {
@@ -40,7 +40,7 @@ const getPosts = (): (Pick<PostType, 'lang' | 'slug' | 'date' | 'title' | 'excer
           readingTime: readingTimeToString(numberOfWords),
           authors: attributes.authors,
           categories: attributes.categories,
-          content,
+          content: markdownToHtml(content),
         },
       ];
     }, [])
@@ -77,7 +77,7 @@ const getAuthors = (): (Pick<AuthorType, 'github' | 'twitter'> & {
         avatarImageUrl: avatarImageExist
           ? getPathFile(`/imgs/authors/${attributes.login}.jpg`)
           : getPathFile('/imgs/astronaut.png'),
-        description: content,
+        description: markdownToHtml(content),
       });
 
       return authors;
@@ -154,7 +154,6 @@ export const generateDataFiles = (options: { rootDir: string }): void => {
 
 export const generateFeedFile = (options: { rootDir: string }): void => {
   const { posts } = getData();
-  const parser = new MarkdownIt();
 
   const feed = new Feed({
     title: 'Blog Eleven Labs',
@@ -179,7 +178,7 @@ export const generateFeedFile = (options: { rootDir: string }): void => {
       link: url,
       date: new Date(post.date),
       description: post.excerpt,
-      content: sanitizeHtml(parser.render(post.content)),
+      content: sanitizeHtml(post.content),
     });
   }
 

@@ -68,7 +68,7 @@ class UploadType extends AbstractType
 }
 ```
 
-En plus de ce formulaire, je vais le lier à une entité **AppBundle\Entity\File**, ce qui va me permettre ensuite de le persister dans la base de données.
+En plus de ce formulaire, je vais le lier à une entité **AppBundle\Entity\File**, ce qui va me permettre ensuite de le persister dans la base de données.
 
 ```php
 <?php
@@ -199,7 +199,7 @@ Je vais d’abord mettre en place le formulaire HTML.
 <p id="errors"></p>
 ```
 
-À l’image du formulaire Symfony que je viens de créer plus tôt, il y a deux champs : **name** et **file**.
+À l’image du formulaire Symfony que je viens de créer plus tôt, il y a deux champs : **name** et **file**.
 
 J’ai ajouté 3 éléments DOM. Ils vont me permettre d’afficher les éventuelles erreurs et la progression du téléversement.
 

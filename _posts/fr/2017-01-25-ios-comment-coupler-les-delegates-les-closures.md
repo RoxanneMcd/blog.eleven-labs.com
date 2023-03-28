@@ -40,7 +40,7 @@ Sur ces 2 composants par exemple, pas possible d'utiliser de blocks/closures, et
 
 ### Mise en situation
 
-Comme dans les deux articles précédents, on va juste faire un Appel GET sur une URL  donnée et avoir un système qui nous prévient en cas de succès comme d'erreur. On va aller un peu plus vite que dans le premier article, car ce sont des notions que vous devez déjà maîtriser.
+Comme dans les deux articles précédents, on va juste faire un Appel GET sur une URL  donnée et avoir un système qui nous prévient en cas de succès comme d'erreur. On va aller un peu plus vite que dans le premier article, car ce sont des notions que vous devez déjà maîtriser.
 
 C'est parti pour le code !
 
@@ -100,7 +100,7 @@ On va maintenant implémenter la classe qui va hériter du protocole. Elle va do
 @end
 ```
 
-Ensuite, on code la classe **RequestManager** que vous devez commencer à connaître
+Ensuite, on code la classe **RequestManager** que vous devez commencer à connaître
 
 ```Objective-C
 @implementation RequestManagerObjC
@@ -149,7 +149,7 @@ Puis on va faire une méthode pour appeler notre webservice
 ```
 
 On va un peu regarder ensemble ce que l'on a codé.
-- On a instancié notre **Manager,** qui va appeler le webservice
+- On a instancié notre **Manager,** qui va appeler le webservice
 - On a définit nos deux **blocks/closures**
 - On a instancié notre **Delegate**
 - On a assigné nos deux **blocks/closures**
@@ -225,7 +225,7 @@ Si maintenant j'appelle la méthode callWebService, vu le dummy code que l'on a 
 
 **Mais pourquoi faire tout ça ?**
 
-En effet, pourquoi faire tout ça, alors que dans notre cas, on pouvait juste utiliser un **Delegate** ou des **blocks/closures** comme dans le premier article ? Cela complexifie le code, et on a l'impression de faire les choses deux fois...
+En effet, pourquoi faire tout ça, alors que dans notre cas, on pouvait juste utiliser un **Delegate** ou des **blocks/closures** comme dans le premier article ? Cela complexifie le code, et on a l'impression de faire les choses deux fois...
 Comme je vous l'ai dit au début de l'article, cette solution vient pour un besoin assez spécifique. Celui de rendre un **Delegate** plus flexible quand on est obligé de passer par ce design pattern.
 
 **Problèmes soulevés**

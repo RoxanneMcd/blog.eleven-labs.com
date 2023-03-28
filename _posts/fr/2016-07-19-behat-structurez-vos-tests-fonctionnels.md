@@ -31,7 +31,7 @@ Lorsque nous parlons de "tests fonctionnels", nous entendons bien souvent vouloi
 
 Or, il est important d'écrire les cas de tests suivants afin de couvrir le périmètre fonctionnel :
 * `tests d'interface` : il s'agit de réaliser des contrôles d'interface pour s'assurer que le comportement de l'application web réagit correctement,
-* Les `tests d'intégration` : il s'agit de s'assurer que le code (testé unitairement) qui fait tourner l'application réagit bien comme il le devrait lorsque tous les éléments sont assemblés.
+* Les `tests d'intégration` : il s'agit de s'assurer que le code (testé unitairement) qui fait tourner l'application réagit bien comme il le devrait lorsque tous les éléments sont assemblés.
 
 Il conviendra alors de lancer à la fois les tests d'intégration et les tests d'interface avec Behat.
 
@@ -57,7 +57,7 @@ La première étape est d'installer Behat et ses extensions en tant que dépenda
 ```
 {% endraw %}
 
-Afin que vos futurs contextes soient autoloadés, nous allons également ajouter la section `PSR-4` suivante :
+Afin que vos futurs contextes soient autoloadés, nous allons également ajouter la section `PSR-4` suivante :
 
 {% raw %}
 ```json
@@ -105,21 +105,21 @@ Ensuite, nous chargeons ici plusieurs extensions de Behat :
 
 * L'extension `Behat\Symfony2Extension` permettant notamment d'injecter des services Symfony dans nos classes contextes de test,
 * L'extension `Behat\MinkExtension` qui va nous permettre de piloter notre Selenium (qui pilotera lui-même notre navigateur Chrome), nous lui fournissons donc les informations nécessaires tels que le host et port du serveur Selenium ainsi que la base de l'URL à contacter,
-* L'extension `emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension` qui nous permettra de générer un rapport HTML lors du lancement des tests (toujours sympa à présenter au client).
+* L'extension `emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension` qui nous permettra de générer un rapport HTML lors du lancement des tests (toujours sympa à présenter au client).
 
-Notons enfin que dans la section **formatters**, nous conservons le formatter **pretty** afin d'avoir une sortie sympa sur notre terminal et que les rapports HTML seront quant à eux générés dans le répertoire `web/reports/behat` afin qu'ils soient accessibles en HTTP (à priori pas de soucis car vous ne devriez pas jouer ces tests en production, attention à la restriction d'accès si c'est le cas).
+Notons enfin que dans la section **formatters**, nous conservons le formatter **pretty** afin d'avoir une sortie sympa sur notre terminal et que les rapports HTML seront quant à eux générés dans le répertoire `web/reports/behat` afin qu'ils soient accessibles en HTTP (à priori pas de soucis car vous ne devriez pas jouer ces tests en production, attention à la restriction d'accès si c'est le cas).
 
-Maintenant que Behat est prêt et configuré, nous allons préparer nos tests fonctionnels que nous allons découper en deux "suites" Behat distinctes : `integration` et `interface`.
+Maintenant que Behat est prêt et configuré, nous allons préparer nos tests fonctionnels que nous allons découper en deux "suites" Behat distinctes : `integration` et `interface`.
 
 # Ecriture des tests fonctionnels (features)
 
 Nous allons partir sur des tests permettant de s'assurer du bon fonctionnement d'une page d'inscription.
 
-Nous devons avant tout écrire nos scénarios de tests fonctionnels (fichier **.feature**) que nous allons placer dans un répertoire **features/** à la racine du projet.
+Nous devons avant tout écrire nos scénarios de tests fonctionnels (fichier **.feature**) que nous allons placer dans un répertoire **features/** à la racine du projet.
 
 Nous allons donc avoir, par exemple, le scénario suivant :
 
-Fichier : `features/registration/register.feature` :
+Fichier : `features/registration/register.feature` :
 {% raw %}
 ```
 Feature: Register
@@ -228,9 +228,9 @@ Passons maintenant au test d'interface !
 
 Ce test va se baser sur la même feature et nous n'avons absolument rien modifié dans le test précédemment écrit. C'est pourquoi il est important de bien rédiger ses tests fonctionnels afin qu'ils restent assez génériques pour être implémentés à la fois en test d'intégration et en test d'interface.
 
-Créons donc le contexte qui sera utilisé pour le test d'interface (préfixé par Mink dans notre cas, mais vous pouvez préfixer par ce que vous voulez) sous le même répertoire `features/context/registration` :
+Créons donc le contexte qui sera utilisé pour le test d'interface (préfixé par Mink dans notre cas, mais vous pouvez préfixer par ce que vous voulez) sous le même répertoire `features/context/registration` :
 
-Fichier : `features/context/registration/MinkRegisterContext` :
+Fichier : `features/context/registration/MinkRegisterContext` :
 
 {% raw %}
 ```php
@@ -290,7 +290,7 @@ La seule différence est que dans ce contexte, Mink va demander à Selenium d'ef
 
 # Définitions des contextes
 
-Il ne nous reste plus qu'à ajouter les contextes créés précédemment sous notre section **suites** dans le fichier de configuration `behat.yml` :
+Il ne nous reste plus qu'à ajouter les contextes créés précédemment sous notre section **suites** dans le fichier de configuration `behat.yml` :
 
 {% raw %}
 ```yaml
@@ -310,7 +310,7 @@ Il ne nous reste plus qu'à ajouter les contextes créés précédemment sous no
 ```
 {% endraw %}
 
-Il est important de voir ici que nous découpons clairement les tests en deux suites distinctes : `integration` et `interface` : chacune d'entre elles sera exécutée avec les contextes qui lui sont propres.
+Il est important de voir ici que nous découpons clairement les tests en deux suites distinctes : `integration` et `interface` : chacune d'entre elles sera exécutée avec les contextes qui lui sont propres.
 
 Etant donné que nous avons chargés l'extension Symfony2 lors de la mise en place de Behat, nous avons la possibilité d'injecter des services Symfony dans nos contextes, c'est le cas ici avec le service `acme.registration.registerer`.
 
@@ -323,7 +323,7 @@ Le rapport HTML est quand à lui généré dans `web/reports/behat/`, comme spé
 
 # Lier plusieurs contextes entre eux**
 
-Pour terminer, vous pourrez parfois avoir besoin de lier les contextes entre eux. Par exemple, imaginons que vous ayez une deuxième page sur votre formulaire d'inscription pour renseigner les informations personnelles, vous allez alors créer deux nouveaux contextes **IntegrationProfileContext** et `MinkProfileContext`.
+Pour terminer, vous pourrez parfois avoir besoin de lier les contextes entre eux. Par exemple, imaginons que vous ayez une deuxième page sur votre formulaire d'inscription pour renseigner les informations personnelles, vous allez alors créer deux nouveaux contextes **IntegrationProfileContext** et `MinkProfileContext`.
 
 Partons sur le contexte d'intégration pour simplifier l'explication, l'idée est de ne pas dupliquer le code précédemment créé et permettant de tester la première étape `IntegrationRegisterContext` et de réutiliser ces informations dans le nouveau contexte `IntegrationProfileContext`.
 
@@ -365,7 +365,7 @@ class IntegrationProfileContext implements Context
 ```
 {% endraw %}
 
-Vous avez maintenant à disposition une propriété `$registerContext` et pouvez accéder à des informations qui proviennent du contexte précédent.
+Vous avez maintenant à disposition une propriété `$registerContext` et pouvez accéder à des informations qui proviennent du contexte précédent.
 
 # Conclusion
 

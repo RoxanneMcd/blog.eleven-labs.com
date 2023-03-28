@@ -64,7 +64,7 @@ sudo apt-get install apache2;
 sudo /etc/init.d/apache2 restart;
 ```
 
-Une fois terminé, si vous cliquez sur l'IP externe fournie dans l'interface "Instance de VM", vous devriez voir la page apache par défaut.
+Une fois terminé, si vous cliquez sur l'IP externe fournie dans l'interface "Instance de VM", vous devriez voir la page apache par défaut.
 
 ![Apache - Google Cloud Platform](/_assets/posts/2016-12-12-google-cloud-platform-compute-engine-architecture-complete/capture-decran-2016-11-30-a-18.25.36.png)
 
@@ -72,11 +72,11 @@ Comme vous pouvez le voir l'installation prend un certain temps, et nous ne voul
 
 ### Etape 3, création d'un template de machine :
 
-Retour dans l'interface "Instance de VM", vous allez supprimer la machine en sélectionnant la VM puis cliquer sur supprimer.
+Retour dans l'interface "Instance de VM", vous allez supprimer la machine en sélectionnant la VM puis cliquer sur supprimer.
 
 ![Supprimer une instance - Google Cloud Platform](/_assets/posts/2016-12-12-google-cloud-platform-compute-engine-architecture-complete/capture-decran-2016-11-30-a-18.29.17.png)
 
-Allez dans le menu "Images" et cliquez sur "Créer une image".
+Allez dans le menu "Images" et cliquez sur "Créer une image".
 
 ![Créer une image - Google Cloud Platform](/_assets/posts/2016-12-12-google-cloud-platform-compute-engine-architecture-complete/capture-decran-2016-11-30-a-18.32.54.png)
 
@@ -98,7 +98,7 @@ Dans disque de démarrage, vous devez choisir l'image que vous venez de créer, 
 ![Image perso - Google Cloud Platform](/_assets/posts/2016-12-12-google-cloud-platform-compute-engine-architecture-complete/capture-decran-2016-11-30-a-18.41.14.png)
 
 Et n'oubliez pas de cocher la case "Autoriser le trafic HTTP". Puis cliquez sur "Créer".
-Pour vérifier que tout est bon, nous allons créer de nouvelles instances via ce template.
+Pour vérifier que tout est bon, nous allons créer de nouvelles instances via ce template.
 
 ### Etape 4, création d'un groupe d'instance:
 
@@ -173,7 +173,7 @@ Et voila vous avez une architecture scalable automatiquement avec un load balanc
 
 ### Etape 6, on supprime les machines :
 
-Avant de vous quitter, nous allons supprimer les machines.  Vous devez le faire dans l'ordre suivant car sinon les machines se relanceront automatiquement.
+Avant de vous quitter, nous allons supprimer les machines.  Vous devez le faire dans l'ordre suivant car sinon les machines se relanceront automatiquement.
 
 - Supprimez le load balancer
 - Puis dans le menu avancé de l'équilibrage des charges supprimez le service backend

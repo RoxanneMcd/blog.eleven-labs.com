@@ -21,7 +21,7 @@ const generateDataAndFeeds = async (): Promise<void> => {
   });
 
   try {
-    const { generateDataFiles, generateFeedFile } = await vite.ssrLoadModule('/src/helpers/dataHelper.ts');
+    const { generateDataFiles, generateFeedFile } = await vite.ssrLoadModule('/src/helpers/dataHelper.tsx');
     generateDataFiles({ rootDir: resolve(rootDir, 'data') });
     generateFeedFile({ rootDir });
   } catch (e) {

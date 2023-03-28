@@ -16,8 +16,12 @@ export const useLayoutTemplateContainer = (): Omit<LayoutTemplateProps, 'childre
   const cookieConsent = useCookieConsentContainer();
   useTitle(t<string>('meta.title'));
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
+    if ((window as any)?.twttr) {
+      (window as any).twttr.widgets.load();
+    }
   }, [location]);
 
   return {

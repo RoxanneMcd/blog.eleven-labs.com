@@ -115,7 +115,7 @@ class ArticleService
 }
 ```
 
-Looking back at our code, you might be thinking « it looks pretty standard to me, what’s wrong with it? ». Well, if you look at it conceptually, does it make sense? Is it logical to create an empty shell `new Article()` with no properties at all at first? Then setting a title? Then a content? I doubt that you'd be comfortable reading a blank page with nothing in it.
+Looking back at our code, you might be thinking « it looks pretty standard to me, what’s wrong with it? ». Well, if you look at it conceptually, does it make sense? Is it logical to create an empty shell `new Article()` with no properties at all at first? Then setting a title? Then a content? I doubt that you'd be comfortable reading a blank page with nothing in it.
 
 ### Time goes by
 

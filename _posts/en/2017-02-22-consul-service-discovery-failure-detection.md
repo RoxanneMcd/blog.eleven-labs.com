@@ -20,7 +20,7 @@ oldCategoriesAndTags:
 permalink: /en/consul-service-discovery-failure-detection/
 ---
 # Introduction
-Consul is a product developed in Go language by the HashiCorp company and was born in 2013.
+Consul is a product developed in Go language by the HashiCorp company and was born in 2013.
 
 Consul has multiple components but its main goal is to manage the services knowledge in an architecture (which is service discovery) and also allows to ensure that all contacted services are always available by adding health checks on them.
 Basically, Consul will bring us a DNS server that will resolve IP addresses of a host's services, depending on which one will be healthy.
@@ -46,7 +46,7 @@ As you can see, we'll have 3 Docker machines:
 * A machine that will act as our "`node 01`" with an HTTP service that will run on it (Swarm),
 * A machine that will act as our "`node 02`" with an HTTP service that will run on it (Swarm).
 
-We'll also add on our two nodes a Docker container with Registrator image that will facilitate the discovery of Docker containers into Consul.
+We'll also add on our two nodes a Docker container with Registrator image that will facilitate the discovery of Docker containers into Consul.
 
 For more information about Registrator, you can visit: [https://gliderlabs.com/registrator/](https://gliderlabs.com/registrator/){:rel="nofollow"}.
 Let's start to install our architecture!
@@ -89,7 +89,7 @@ Then, open in your browser the following URL: `http://<obtained-ip>:8500`.
 
 ## Second machine: Node 01
 
-Now, it's time to create t`he machine that corresponds to `our first Docker Swarm cluster node and that will also receive the master role for our cluster (we need one...):
+Now, it's time to create t`he machine that corresponds to `our first Docker Swarm cluster node and that will also receive the master role for our cluster (we need one...):
 
 ```bash
 $ docker-machine create -d virtualbox \
@@ -100,8 +100,8 @@ $ docker-machine create -d virtualbox \
     --engine-opt="cluster-advertise=eth1:2376" swarm-node-01
 ```
 
-As you can see, we've added the `--swarm-discovery`  option with our Consul machine IP address and port 8500 that corresponds to the Consul API. This way, Docker Swarm will use the Consul API to store machine information with the rest of the cluster.
-We'll now configure our environment to use this machine and install a `Registrator`  container on top of it in order to auto-register our new services (Docker containers).
+As you can see, we've added the `--swarm-discovery`  option with our Consul machine IP address and port 8500 that corresponds to the Consul API. This way, Docker Swarm will use the Consul API to store machine information with the rest of the cluster.
+We'll now configure our environment to use this machine and install a `Registrator`  container on top of it in order to auto-register our new services (Docker containers).
 
 To do that, type the following:
 
@@ -119,12 +119,12 @@ $ docker run -d \
     consul://$(docker-machine ip consul):8500
 ```
 
-Here, you can notice that we share the host Docker socket in the container. This solution could be a [controversial](https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html) solution but in our example case, forgive me about that ;){:rel="nofollow"}
+Here, you can notice that we share the host Docker socket in the container. This solution could be a [controversial](https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html) solution but in our example case, forgive me about that ;){:rel="nofollow"}
 
-If you want to register services to Consul I recommend to register them using the Consul API in order to keep control on what's added in your Consul.
+If you want to register services to Consul I recommend to register them using the Consul API in order to keep control on what's added in your Consul.
 
-The `-ip`  option allows to precise to Registrator that we want to register our services with the given IP address: so here the Docker machine IP address and not the Docker container internal IP address.
-We are now ready to start our HTTP service. This one is located under the "ekofr/http-ip" Docker image which is a simple Go HTTP application that renders "hello, <ip>" with the IP address of the current container.
+The `-ip`  option allows to precise to Registrator that we want to register our services with the given IP address: so here the Docker machine IP address and not the Docker container internal IP address.
+We are now ready to start our HTTP service. This one is located under the "ekofr/http-ip" Docker image which is a simple Go HTTP application that renders "hello, <ip>" with the IP address of the current container.
 
 In order to fit this article needs, we will also create a different network for the two Docker machines in order to clearly identify IP addresses for our two services.
 
@@ -153,7 +153,7 @@ hello from 172.18.0.X
 
 ## Third machine: Node 02
 
-We'll now repeat most steps we've ran for our first node but we'll change some values. First, create the Docker machine:
+We'll now repeat most steps we've ran for our first node but we'll change some values. First, create the Docker machine:
 
 ```bash
 $ docker-machine create -d virtualbox \
@@ -211,9 +211,9 @@ http-ip.service.consul. 0 IN A 192.168.99.102
 In other words, a kind of load balancing will be done on one of these services when you'll try to join them `http://http-ip.service.consul`.
 
 Ok, but what about the load balancing repartition? Are we able to define a priority and/or weight for each services?
-Sadly, the answer is no, actually. An issue is currently opened about that on Github in order to bring this support. You can find it here: [https://github.com/hashicorp/consul/issues/1088](https://github.com/hashicorp/consul/issues/1088){:rel="nofollow"}.
+Sadly, the answer is no, actually. An issue is currently opened about that on Github in order to bring this support. You can find it here: [https://github.com/hashicorp/consul/issues/1088](https://github.com/hashicorp/consul/issues/1088){:rel="nofollow"}.
 
-Indeed, if we look in details about `SRV`  DNS record type, here is what we get:
+Indeed, if we look in details about `SRV`  DNS record type, here is what we get:
 
 ```bash
 $ dig @$(docker-machine ip consul) http-ip.service.consul SRV
@@ -240,7 +240,7 @@ Here, we have an IP address that corresponds to each HTTP service that we have r
 
 We'll now add a Health Check to our service in order to ensure that it can be use safely by our users.
 
-In this case we'll start to return on our node 01 and suppress the container named `ekofr/http-ip`  in order to recreate it with a Health Check:
+In this case we'll start to return on our node 01 and suppress the container named `ekofr/http-ip`  in order to recreate it with a Health Check:
 
 ```bash
 $ eval $(docker-machine env swarm-node-01)
@@ -264,7 +264,7 @@ $ docker run -d \
     ekofr/http-ip
 ```
 
-You can do the same thing on your node 02 (by paying attention to modify the `node-01`  values to `node-02` ) and you should now visualize these checks on the Consul web UI:
+You can do the same thing on your node 02 (by paying attention to modify the `node-01`  values to `node-02` ) and you should now visualize these checks on the Consul web UI:
 
 ![Consul Infrastructure Schema](/_assets/posts/2017-02-22-consul-service-discovery-failure/checks.png)
 

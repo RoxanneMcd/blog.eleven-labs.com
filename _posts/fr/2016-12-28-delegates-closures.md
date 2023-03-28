@@ -101,7 +101,7 @@ class MyClassSwift: UIViewController, RequesterDelegateSwift {
 }
 ```
 
-On a donc notre Class MyClass qui hérite du protocol RequesterDelegate et qui implémente 2 méthodes (onRequestSuccess, onRequestFailure). On va faire une dummy implementation pour vous donner une idée de comment ça fonctionne :
+On a donc notre Class MyClass qui hérite du protocol RequesterDelegate et qui implémente 2 méthodes (onRequestSuccess, onRequestFailure). On va faire une dummy implementation pour vous donner une idée de comment ça fonctionne :
 
 ##### Objective-C
 
@@ -297,4 +297,4 @@ func get(url: String, successClosure: () -> Void, failureClosure: () -> Void) {
 
 #### Conclusion
 
-Du coup, comme avant, on a juste à appeler la méthode callWebServiceWithClosure et on a une callback de retour pour le succès et une pour l'erreur. Vous me allez me demander, quel est l'avantage ? Tout simplement, de base vous n'êtes plus obligé d'hériter d'une interface, ça ne parait pas, mais comme ça, au bout d'un moment, c'est plus simple. Pour la compréhension aussi, c'est plus clair/facile, on voit directement les traitements qui sont fait juste au dessus du call, plutôt que de devoir chercher dans le code pour trouver où le retour est géré. Et comme dit plus haut, si vous avez plusieurs Webservices à appeler, vous êtes capable de bien isoler le code à chaque fois. Le but ici, c'est juste de vous présenter les deux principes, si vous faites du mobile, c'est une problématique que vous avez déjà dû rencontrer plus d'une fois. Mais du coup, ce serait pas cool de pouvoir combiner les deux, Delegates avec block ou closure ? Hum, mais ça devient intéressant. On se fait ça ensemble lors d'un prochain article ? Allez, salut les astronautes :)
+Du coup, comme avant, on a juste à appeler la méthode callWebServiceWithClosure et on a une callback de retour pour le succès et une pour l'erreur. Vous me allez me demander, quel est l'avantage ? Tout simplement, de base vous n'êtes plus obligé d'hériter d'une interface, ça ne parait pas, mais comme ça, au bout d'un moment, c'est plus simple. Pour la compréhension aussi, c'est plus clair/facile, on voit directement les traitements qui sont fait juste au dessus du call, plutôt que de devoir chercher dans le code pour trouver où le retour est géré. Et comme dit plus haut, si vous avez plusieurs Webservices à appeler, vous êtes capable de bien isoler le code à chaque fois. Le but ici, c'est juste de vous présenter les deux principes, si vous faites du mobile, c'est une problématique que vous avez déjà dû rencontrer plus d'une fois. Mais du coup, ce serait pas cool de pouvoir combiner les deux, Delegates avec block ou closure ? Hum, mais ça devient intéressant. On se fait ça ensemble lors d'un prochain article ? Allez, salut les astronautes :)

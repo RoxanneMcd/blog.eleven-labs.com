@@ -11,7 +11,6 @@ import {
   PostPreviewList,
   PostPreviewListProps,
 } from '@/components';
-import { MarkdownToHtml } from '@/components/MarkdownToHtml';
 
 export type AuthorPageProps = {
   backLink: { label: React.ReactNode } & AsProps<'a'>;
@@ -33,7 +32,7 @@ export const AuthorPage: React.FC<AuthorPageProps> = ({
   postPreviewList,
   newsletterBlock,
 }) => (
-  <Container as="main" className="author-page">
+  <Container className="author-page">
     <Link {...backLinkProps} icon="arrow-back" size="m">
       {label}
     </Link>
@@ -49,7 +48,7 @@ export const AuthorPage: React.FC<AuthorPageProps> = ({
         <Text size="m" fontWeight="medium" color="amaranth">
           {author.name}
         </Text>
-        <MarkdownToHtml content={author.description} />
+        <Box dangerouslySetInnerHTML={{ __html: author.description }} />
       </Box>
     </Flex>
     <Divider mt="m" bg="light-grey" className="author-page__divider" />

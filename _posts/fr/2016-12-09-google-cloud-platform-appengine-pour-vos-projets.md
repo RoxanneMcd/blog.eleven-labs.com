@@ -26,14 +26,14 @@ Vous avez souvent été bloqué dans vos projets parce qu'il est difficile de me
 En effet, il faut des serveurs, les installer, les configurer et installer votre projet.
 Comment rendre cela plus simple ?
 
-Avant de commencer ce tutoriel, il faut suivre les 2 premières étapes du tutoriel Google Cloud Platform (1/3).
+Avant de commencer ce tutoriel, il faut suivre les 2 premières étapes du tutoriel Google Cloud Platform (1/3).
 
 Dans le tutoriel d'aujourd'hui, nous allons utiliser la solution [AppEngine](https://console.cloud.google.com/appengine){:rel="nofollow noreferrer"}, qui vous permet de déployer facilement et directement depuis votre ordinateur votre application dans le Cloud.
 Par défaut AppEngine permet d'installer du Java, du Php, du Go et du Python, mais il permet aussi d'installer du Node, c'est d'ailleurs sur cette technologie que nous allons partir.
 
 ### Etape 1, installer le sdk Google Cloud Platform
 
-Je vous invite à suivre les instructions disponibles [ici](https://cloud.google.com/sdk/docs/?hl=fr){:rel="nofollow noreferrer"}. Une fois l'installation terminée vous devriez pouvoir lancer la commande suivante dans votre terminal :
+Je vous invite à suivre les instructions disponibles [ici](https://cloud.google.com/sdk/docs/?hl=fr){:rel="nofollow noreferrer"}. Une fois l'installation terminée vous devriez pouvoir lancer la commande suivante dans votre terminal :
 
 ```sh
 gcloud -help
@@ -42,7 +42,7 @@ Si ce n'est pas le cas, vérifiez votre installation.
 
 ### Etape 2, créer votre projet node.js
 
-Pour continuer nous allons faire simple en mettant en place un petit "Hello Word",  avec [Express.js](http://expressjs.com/fr/){:rel="nofollow noreferrer"}.
+Pour continuer nous allons faire simple en mettant en place un petit "Hello Word",  avec [Express.js](http://expressjs.com/fr/){:rel="nofollow noreferrer"}.
 
 Créez un nouveau dossier, ajoutez le fichier package.json :
 
@@ -82,7 +82,7 @@ Si vous lancez dans votre terminal :
 npm install && npm start
 ```
 
-Normalement si vous suivez le lien [http://localhost:8080/](http://localhost:8080/){:rel="nofollow noreferrer"} un joli "Hello World!" s'affiche.
+Normalement si vous suivez le lien [http://localhost:8080/](http://localhost:8080/){:rel="nofollow noreferrer"} un joli "Hello World!" s'affiche.
 
 ### Etape 3, mettons du Cloud
 
@@ -151,9 +151,9 @@ Une fois le processus terminé vous pouvez choisir vous même comment répartir 
 
 ### Etape 7, répartir le trafic
 
-La répartition du trafic permet de gérer un changement de version progressif de votre application. Pour procéder à cette répartition rien de plus simple, sélectionnez les versions avec lesquelles vous voulez travailler et cliquez sur "Répartir le trafic".
+La répartition du trafic permet de gérer un changement de version progressif de votre application. Pour procéder à cette répartition rien de plus simple, sélectionnez les versions avec lesquelles vous voulez travailler et cliquez sur "Répartir le trafic".
 
-Vous arrivez sur l'interface suivante :
+Vous arrivez sur l'interface suivante :
 
 ![Répartir le traffic - Google Cloud Platform](/_assets/posts/2016-12-09-google-cloud-platform-appengine-pour-vos-projets/capture-decran-2016-11-30-a-14.18.42.png)
 

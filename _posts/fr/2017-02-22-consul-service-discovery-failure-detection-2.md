@@ -25,7 +25,7 @@ Consul est un outil développé en Go par la société HashiCorp et a vu le jour
 Consul a plusieurs composants mais son objectif principal est de regrouper la connaissance des services d'une architecture (service discovery) et permet de s'assurer que les services contactés sont toujours disponibles en s'assurant que la santé de ces services est toujours bonne (via du health check).
 
 Concrètement, Consul va nous apporter un serveur DNS permettant de mettre à jour les adresses IP disponibles pour un service, en fonction de ceux qui sont en bonne santé. Ceci permet également de faire du load balancing bien que nous verrons qu'il ne permette pas pour le moment de préférer un service à un autre.
-Il offre également d'autres services tel que du stockage clé/valeur, nous l'utiliserons dans cet article afin que Docker Swarm y stocke ses valeurs.
+Il offre également d'autres services tel que du stockage clé/valeur, nous l'utiliserons dans cet article afin que Docker Swarm y stocke ses valeurs.
 
 Afin de clarifier la suite de cet article, voici les ports utilisés par Consul :
 
@@ -98,7 +98,7 @@ $ docker-machine create -d virtualbox \
     --engine-opt="cluster-advertise=eth1:2376" swarm-node-01
 ```
 
-Comme vous le voyez, nous précisons l'option `--swarm-discovery`  avec l'IP de notre machine Consul et le port 8500 correspondant à l'API de Consul. Ainsi, Docker Swarm pourra utiliser l'API pour enregistrer les machines du cluster.
+Comme vous le voyez, nous précisons l'option `--swarm-discovery`  avec l'IP de notre machine Consul et le port 8500 correspondant à l'API de Consul. Ainsi, Docker Swarm pourra utiliser l'API pour enregistrer les machines du cluster.
 
 Nous allons maintenant configurer notre environnement pour utiliser cette machine et y installer dessus un container Registrator permettant d'auto-enregistrer les nouveaux services sur Consul.
 
@@ -118,10 +118,10 @@ $ docker run -d \
     consul://$(docker-machine ip consul):8500
 ```
 
-Vous remarquez que nous partageons le socket Docker sur la machine. Cette solution peut être [controversée](https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html mais dans le cas de cet article, passons là-dessus. Pour une architecture stable, nous préférerons enregistrer nous-même les services via l'API de Consul.
-L'option `-ip`  permet de préciser à Registrator l'IP sur laquelle nous voulons accéder aux services, à savoir l'IP de la machine et non pas l'IP interne du container Docker.
+Vous remarquez que nous partageons le socket Docker sur la machine. Cette solution peut être [controversée](https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html mais dans le cas de cet article, passons là-dessus. Pour une architecture stable, nous préférerons enregistrer nous-même les services via l'API de Consul.
+L'option `-ip`  permet de préciser à Registrator l'IP sur laquelle nous voulons accéder aux services, à savoir l'IP de la machine et non pas l'IP interne du container Docker.
 
-Nous sommes prêts à démarrer notre service HTTP. Celui-ci est une simple image Docker "ekofr/http-ip" qui lance une application HTTP écrite en Go et qui affiche "hello, <ip>" avec l'adresse IP du container courant.
+Nous sommes prêts à démarrer notre service HTTP. Celui-ci est une simple image Docker "ekofr/http-ip" qui lance une application HTTP écrite en Go et qui affiche "hello, <ip>" avec l'adresse IP du container courant.
 
 Pour le besoin de cet article, nous allons également créer un réseau différent entre les deux machines afin d'identifier des adresses IP différentes pour les deux services.
 
@@ -192,7 +192,7 @@ Nous voilà prêt à découvrir ce que nous apporte Consul.
 
 # Requêtes DNS
 
-Vous pouvez en effet maintenant résoudre votre service `http-ip.service.consul`  en utilisant le serveur DNS apporté par Consul, vous devriez voir vos deux services enregistrés :
+Vous pouvez en effet maintenant résoudre votre service `http-ip.service.consul`  en utilisant le serveur DNS apporté par Consul, vous devriez voir vos deux services enregistrés :
 
 ```bash
 $ dig @$(docker-machine ip consul) http-ip.service.consul
@@ -210,7 +210,7 @@ Oui, mais qu'en est-il du côté de la répartition de cette charge ? Pouvons-no
 
 Malheureusement, la réponse est non, pas pour le moment. Une issue a cependant été ouverte sur Github pour demander le support de celui-ci : [https://github.com/hashicorp/consul/issues/1088](https://github.com/hashicorp/consul/issues/1088){:rel="nofollow noreferrer"}.
 
-En effet, si nous regardons de plus près l'enregistrement DNS de type `SRV` , voici ce que nous obtenons :
+En effet, si nous regardons de plus près l'enregistrement DNS de type `SRV` , voici ce que nous obtenons :
 
 ```bash
 $ dig @$(docker-machine ip consul) http-ip.service.consul SRV
@@ -238,7 +238,7 @@ Nous avons ici une IP correspondant à chaque service HTTP que nous avons enregi
 
 Nous allons maintenant ajouter un Health Check à notre service afin de s'assurer que celui-ci peut être utilisé.
 
-Nous allons donc commencer par retourner sur notre node 01 et supprimer le container `ekofr/http-ip`  afin de le recréer avec un Health Check :
+Nous allons donc commencer par retourner sur notre node 01 et supprimer le container `ekofr/http-ip`  afin de le recréer avec un Health Check :
 
 ```bash
 $ eval $(docker-machine env swarm-node-01)
@@ -262,7 +262,7 @@ $ docker run -d \
     ekofr/http-ip
 ```
 
-Vous pouvez faire de même sur le node 02 (en faisant attention à bien modifier les `node-01`  en `node-02` ) et vous devriez maintenant pouvoir visualiser ces checks sur l'interface Consul :
+Vous pouvez faire de même sur le node 02 (en faisant attention à bien modifier les `node-01`  en `node-02` ) et vous devriez maintenant pouvoir visualiser ces checks sur l'interface Consul :
 
 ![Consul Infrastructure Schema](/_assets/posts/2017-02-22-consul-service-discovery-failure/schema.png)
 

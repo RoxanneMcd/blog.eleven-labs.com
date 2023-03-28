@@ -41,9 +41,9 @@ Pensez bien à activer le bundle dans votre kernel.
 # Configuration
 
 Il va maintenant nous falloir définir la configuration de notre workflow et ainsi définir les statuts (appelés places) et transitions possibles.
-Pour cet article, nous sommes partis sur un exemple basé sur les statuts d'une pull request. Celle-ci peut avoir les états suivants : `opened` , `closed` , `needs_review` , `reviewed`  et enfin `merged`.
+Pour cet article, nous sommes partis sur un exemple basé sur les statuts d'une pull request. Celle-ci peut avoir les états suivants : `opened` , `closed` , `needs_review` , `reviewed`  et enfin `merged`.
 
-Cependant, elle ne pourra, par exemple, pas être passée en `merged`  sans être passée par le statut `reviewed` . C'est ici que le composant Workflow prend tout son sens.
+Cependant, elle ne pourra, par exemple, pas être passée en `merged`  sans être passée par le statut `reviewed` . C'est ici que le composant Workflow prend tout son sens.
 
 Voici ce que donne notre configuration complète :
 ```yaml
@@ -77,8 +77,8 @@ workflow:
                     to:   closed
 ```
 
-Nous spécifions ici que nous souhaitons utiliser un workflow de type `multiple_state` . Notez que si vous souhaitez utiliser une transition simple d'un statut vers un autre, vous pouvez utiliser ici `single_state`.
-Nous disposons donc également d'une classe `AppBundle\Entity\PullRequest`  qui dispose d'une propriété `state`  ainsi que son setter et getter associé (le composant va utiliser les méthodes getter et setter pour changer l'état et/ou obtenir l'état courant) :
+Nous spécifions ici que nous souhaitons utiliser un workflow de type `multiple_state` . Notez que si vous souhaitez utiliser une transition simple d'un statut vers un autre, vous pouvez utiliser ici `single_state`.
+Nous disposons donc également d'une classe `AppBundle\Entity\PullRequest`  qui dispose d'une propriété `state`  ainsi que son setter et getter associé (le composant va utiliser les méthodes getter et setter pour changer l'état et/ou obtenir l'état courant) :
 
 ```php
 <?php
@@ -165,7 +165,7 @@ class PullRequestController extends Controller
 }
 ```
 
-Si vous ne passez pas par la méthode `can()` , la méthode `apply()`  renverra une exception si la transition ne peut pas être effectuée. Vous pouvez donc également catcher cette exception de type `Symfony\Component\Workflow\Exception\LogicException`.
+Si vous ne passez pas par la méthode `can()` , la méthode `apply()`  renverra une exception si la transition ne peut pas être effectuée. Vous pouvez donc également catcher cette exception de type `Symfony\Component\Workflow\Exception\LogicException`.
 
 Pour lister les transitions disponibles :
 
@@ -179,17 +179,17 @@ Globalement, l'utilisation du composant se limite à ces 3 méthodes. Comme vous
 
 Le composant utilise également plusieurs événements, à savoir, dans l'ordre chronologique :
 
-* `workflow.leave`  : lorsque notre pull request va se voir dépourvue de son dernier statut,
-* `workflow.transition`  : lorsque la transition vers le nouvel état est lancée,
-* `workflow.enter`  : lorsque le nouvel état est défini sur notre pull request,
-* `workflow.guard`  : pour vous éviter de rendre la transition possible, vous pouvez utiliser cet événement pour définir votre événement bloqué : `$event->setBlocked(true);`
+* `workflow.leave`  : lorsque notre pull request va se voir dépourvue de son dernier statut,
+* `workflow.transition`  : lorsque la transition vers le nouvel état est lancée,
+* `workflow.enter`  : lorsque le nouvel état est défini sur notre pull request,
+* `workflow.guard`  : pour vous éviter de rendre la transition possible, vous pouvez utiliser cet événement pour définir votre événement bloqué : `$event->setBlocked(true);`
 
 Enfin, sachez que ces événements existent aussi en version unique pour chaque workflow afin de vous permettre de vous brancher dessus uniquement sur certains workflows. Il vous faut alors utiliser le nom `workflow.pull_request.enter`.
 
 Faisons encore mieux, vous pouvez même vous brancher sur une transition particulière :
 
-* `workflow.pull_request.enter.needs_review`  : permet de se brancher uniquement lorsque nous définissons un nouvel état `needs_review`  à notre pull request, nous pourrons alors envoyer un email à l'auteur pour qu'il corrige certaines choses,
-* `workflow.pull_request.transition.merge`  : interviendra lorsque la transition de merge prendra effet sur notre pull request.
+* `workflow.pull_request.enter.needs_review`  : permet de se brancher uniquement lorsque nous définissons un nouvel état `needs_review`  à notre pull request, nous pourrons alors envoyer un email à l'auteur pour qu'il corrige certaines choses,
+* `workflow.pull_request.transition.merge`  : interviendra lorsque la transition de merge prendra effet sur notre pull request.
 
 # Conclusion
 

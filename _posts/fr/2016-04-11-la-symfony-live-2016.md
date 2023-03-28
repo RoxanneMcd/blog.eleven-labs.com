@@ -51,15 +51,15 @@ Les avantages de l'utilisation d'un seul répertoire pour un projet sont :
 
 
 - la simplicité des codes review, comme le code de tous les applicatifs sont dans le même répertoire, une réfactorisation de classe peut se faire en une seule PR et beaucoup plus facilement avec un simple 'sed'
-- il n'est plus nécessaire de gérer les dépendances internes, exemple le sdk et l'api du projet évoluent au même moment et seront à jour en même temps.
+- il n'est plus nécessaire de gérer les dépendances internes, exemple le sdk et l'api du projet évoluent au même moment et seront à jour en même temps.
 
 
 <blockquote class="twitter-tweet"><p>Ne plus avoir les dépendances internes dans <a href="https://twitter.com/hashtag/composer?src=hash">#composer</a> ça me paraît pas mal ! <a href="https://twitter.com/hashtag/Symfony_Live?src=hash">#Symfony_Live</a></p>
 <p>— Jonathan (@CaptainJojo42) <a href="https://twitter.com/CaptainJojo42/status/717978379870408704">7 avril 2016</a></p></blockquote>
 
-Mais comme le dit Fabien Potencier, le mieux est d'avoir les deux gestions de répertoire, avoir une gestion monolithique et avoir un répertoire par projet que l'on souhaite suivre. Le but étant de pouvoir partager des morceaux du projet sans avoir à donner l'ensemble du projet, cela est intéressant surtout lors de la réalisation de projet avec des prestataires externes.
+Mais comme le dit Fabien Potencier, le mieux est d'avoir les deux gestions de répertoire, avoir une gestion monolithique et avoir un répertoire par projet que l'on souhaite suivre. Le but étant de pouvoir partager des morceaux du projet sans avoir à donner l'ensemble du projet, cela est intéressant surtout lors de la réalisation de projet avec des prestataires externes.
 
-La difficulté d'avoir cette gestion pour les répertoires, est de s'outiller pour suivre l'ensemble des projets. Durant la conférence, Fabien Potencier nous a montré comment il gère cet ensemble plutôt compliqué à l'aide de "git sub-tree" qui a du être recodé suite à des problèmes de lenteur d'exécution (jusqu'a 1 jour complet).
+La difficulté d'avoir cette gestion pour les répertoires, est de s'outiller pour suivre l'ensemble des projets. Durant la conférence, Fabien Potencier nous a montré comment il gère cet ensemble plutôt compliqué à l'aide de "git sub-tree" qui a du être recodé suite à des problèmes de lenteur d'exécution (jusqu'a 1 jour complet).
 
 <blockquote class="twitter-tweet">
 <p dir="ltr" lang="fr">Recoder git sub-tree pour splitter mon repo <a href="https://twitter.com/hashtag/github?src=hash">#github</a> c'est pas facile <a href="https://twitter.com/hashtag/Symfony_Live?src=hash">#Symfony_Live</a></p>
@@ -84,7 +84,7 @@ Lors de son talk, un exemple de code nous apporte une idée de l'utilisation bea
 
 ### La migration de Symfony 2.0 à 3.0 où comment faire une migration progressive.
 
-La Fourchette est venue nous montrer comment mettre en place une migration progressive de leurs applications, la problématique étant de ne jamais avoir d'interruption de service.
+La Fourchette est venue nous montrer comment mettre en place une migration progressive de leurs applications, la problématique étant de ne jamais avoir d'interruption de service.
 
 <blockquote class="twitter-tweet">
 <p dir="ltr" lang="fr">Voilà comment faire une migration from scratch <a href="https://twitter.com/hashtag/Symfony_Live?src=hash">#Symfony_Live</a> , bientôt sur <a href="https://twitter.com/lemondefr">@lemondefr</a> <a href="https://t.co/k4Jk3YESfD">pic.twitter.com/k4Jk3YESfD</a></p>
@@ -108,7 +108,7 @@ Je trouve leur migration vraiment sympa, elle permet de vérifier les choix tech
 
 ### Les fuites de mémoire en PHP
 
-Le début du talk nous a permis de comprendre comment PHP opère la gestion de sa mémoire. Cela permet d'avoir une réflexion sur les problèmes liés à cette façon de faire et donc de réfléchir à notre code. L'exemple marquant est l'utilisation d'objet cyclique (A appelle B qui lui même utilise A), qui arrive à chaque fois à une fuite mémoire.
+Le début du talk nous a permis de comprendre comment PHP opère la gestion de sa mémoire. Cela permet d'avoir une réflexion sur les problèmes liés à cette façon de faire et donc de réfléchir à notre code. L'exemple marquant est l'utilisation d'objet cyclique (A appelle B qui lui même utilise A), qui arrive à chaque fois à une fuite mémoire.
 
 <blockquote class="twitter-tweet">
 <p dir="ltr" lang="fr">Très bonne explication des memory leak en <a href="https://twitter.com/hashtag/php?src=hash">#php</a> par <a href="https://twitter.com/BJacquemont">@BJacquemont</a> <a href="https://twitter.com/hashtag/Symfony_Live?src=hash">#Symfony_Live</a> <a href="https://t.co/xFJms9WrHQ">pic.twitter.com/xFJms9WrHQ</a></p>
@@ -130,14 +130,14 @@ Le speaker vient nous expliquer la mise en place des microservices chez Auchan, 
 
 > 1 microservice = 1 domaine métier = 1 composant applicatif
 
-Il montre que l'architecture qu'il voulait mettre en place devait suivre le reactive manifesto disponible [ici](http://www.reactivemanifesto.org/fr){:rel="nofollow noreferrer"} . En résumé c'est:
+Il montre que l'architecture qu'il voulait mettre en place devait suivre le reactive manifesto disponible [ici](http://www.reactivemanifesto.org/fr){:rel="nofollow noreferrer"} . En résumé c'est:
 
 - responsive
 - resilient
 - elactic
 - message driven
 
-La première étape de son travail a été de mettre en place un message driven. Il a donc choisi RabbitMq, mais cela ne suivant pas le manifesto qui n'était ni elastic, ni résilent, ni responsive, il a donc choisi de reporter le problème et de faire une nouvelle architecture.
+La première étape de son travail a été de mettre en place un message driven. Il a donc choisi RabbitMq, mais cela ne suivant pas le manifesto qui n'était ni elastic, ni résilent, ni responsive, il a donc choisi de reporter le problème et de faire une nouvelle architecture.
 
 Tout d'abord il a choisi un format d'exchange entre les applicatifs, le canonical data (json).
 
@@ -163,7 +163,7 @@ Ce composant ne parle pas à grand monde, d'ailleurs peu de personnes l'utilisen
 
 Le composant workflow est une machine à état ou machine de pétri. Il est développé par Fabien Potencier au début puis surtout par Grégoire Pineau qui l'a repris en main, il a essayé de suivre les spécifications de la machine de pétri.
 
-Le composant permet de suivre le workflow d'un objet très facilement, il suffit de beaucoup de config et un peu d'implémentation pour les transitions.
+Le composant permet de suivre le workflow d'un objet très facilement, il suffit de beaucoup de config et un peu d'implémentation pour les transitions.
 
 Durant tout le talk, il donne l'exemple de la presse et la gestion du workflow de publication ce qui nous donne un vrai exemple d'utilisation de ce nouveau composant.
 
@@ -180,7 +180,7 @@ On y retrouve un tutoriel de l'utilisation d'Elasticsearch avec de nombreux exem
 <p>— Jonathan (@CaptainJojo42) <a href="https://twitter.com/CaptainJojo42/status/718084231981830144">7 avril 2016</a></p></blockquote>
 
 
-En bref un bon récapitulatif de la documentation Elasticsearch, dommage de ne pas être allé plus loin.
+En bref un bon récapitulatif de la documentation Elasticsearch, dommage de ne pas être allé plus loin.
 
 [Les slides et les avis](https://joind.in/event/symfonylive-paris-2016/elasticsearch-chez-blablacar){:rel="nofollow noreferrer"}
 
@@ -192,7 +192,7 @@ Tout d'abord, il a choisi des métriques à suivre qui permettent d'avoir une li
 
 Il a choisi alors le framework, Symfony n'avait pas les meilleures performances, au contraire il était dans les derniers, mais cela était surtout dû à Doctrine, CCM Benchmark avait envie de travailler avec Symfony car malgré de mauvaises performances, c'est un framework très suivi et qui a beaucoup d'autres avantages.
 
-Il a donc codé leur propre ORM nommé [Ting](http://tech.ccmbg.com/ting/){:rel="nofollow noreferrer"} qui a remis Symfony dans la course des performances.
+Il a donc codé leur propre ORM nommé [Ting](http://tech.ccmbg.com/ting/){:rel="nofollow noreferrer"} qui a remis Symfony dans la course des performances.
 
 Une fois le framework choisi, il donne plusieurs petits tips pour améliorer le cache Symfony telle que la mise en place du warm-up après la mise en production et pleins d'autres à revoir dans les slides.
 
@@ -250,7 +250,7 @@ La présentation était sympa et permet de réfléchir sur la mise en place du c
 
 ### La sécurité web par Blablacar.
 
-La présentation était très parlante et permet de voir le nombre de failles possibles dans un site web. L'exemple parlant du champ hidden qui n'est pas correctement vérifié sur le serveur et permet d'avoir pleins de billets SNCF pour le prix d'un parait une évidence mais rappelle que la sécurité est une affaire du quotidien.
+La présentation était très parlante et permet de voir le nombre de failles possibles dans un site web. L'exemple parlant du champ hidden qui n'est pas correctement vérifié sur le serveur et permet d'avoir pleins de billets SNCF pour le prix d'un parait une évidence mais rappelle que la sécurité est une affaire du quotidien.
 
 <blockquote class="twitter-tweet"><p>Et voilà un petit crawler fait par <a href="https://twitter.com/BlaBlaCarTech">@BlaBlaCarTech</a> grâce à <a href="https://twitter.com/fabpot">@fabpot</a> <a href="https://twitter.com/hashtag/symfony_live?src=hash">#symfony_live</a> <a href="https://t.co/wQm5QBrcgO">pic.twitter.com/wQm5QBrcgO</a></p>
 <p>— Jonathan (@CaptainJojo42) <a href="https://twitter.com/CaptainJojo42/status/718364085990137856">8 avril 2016</a></p></blockquote>
@@ -275,7 +275,7 @@ Les speakers nous ont présenté plusieurs cas d'utilisation. Doctrine ne permet
 <p>— Jonathan (@CaptainJojo42) <a href="https://twitter.com/CaptainJojo42/status/718373491104489472">8 avril 2016</a></p></blockquote>
 
 Durant tout le talk, les présentateurs parlent des problématiques rencontrées avec Doctrine et comment faire pour y répondre. Mais comme d'habitude, on y retrouve une succession de code magique, qui n'invite pas à l'utilisation de Doctrine.
-Je repars dans le même état d'esprit qu'en arrivant : je n'ai aucune envie d'utiliser Doctrine.
+Je repars dans le même état d'esprit qu'en arrivant : je n'ai aucune envie d'utiliser Doctrine.
 
 <blockquote class="twitter-tweet">
 <p dir="ltr" lang="fr">Pas de changement d'avis sur <a href="https://twitter.com/hashtag/doctrine?src=hash">#doctrine</a> trop de code pour faire des requêtes <a href="https://twitter.com/hashtag/symfony_live?src=hash">#symfony_live</a> <a href="https://t.co/25Mna0ppTz">pic.twitter.com/25Mna0ppTz</a></p>
@@ -287,7 +287,7 @@ Je repars dans le même état d'esprit qu'en arrivant : je n'ai aucune envie d'
 
 La présentation était très métier, je n'ai presque rien noté. La seule chose que j'ai comprise est que l'utilisation du composant d'expression langage était très simple d'utilisation.
 
-C'est ce genre de présentation très métier qui sans notion de ce dernier, me pose problème et m'ennuie dans les conférences. Heureusement, une session de live coding m'a permis de ne pas m'endormir.
+C'est ce genre de présentation très métier qui sans notion de ce dernier, me pose problème et m'ennuie dans les conférences. Heureusement, une session de live coding m'a permis de ne pas m'endormir.
 
 <blockquote class="twitter-tweet"><p>Une petit session de <a href="https://twitter.com/hashtag/livecoding?src=hash">#livecoding</a> au <a href="https://twitter.com/hashtag/symfony_live?src=hash">#symfony_live</a> sur le composant <a href="https://twitter.com/hashtag/expression?src=hash">#expression</a>-language. <a href="https://twitter.com/hashtag/bravo?src=hash">#bravo</a> <a href="https://t.co/c14TmoOirn">pic.twitter.com/c14TmoOirn</a></p>
 <p>— Jonathan (@CaptainJojo42) <a href="https://twitter.com/CaptainJojo42/status/718418419448721409">8 avril 2016</a></p></blockquote>
@@ -296,7 +296,7 @@ C'est ce genre de présentation très métier qui sans notion de ce dernier, me
 
 ### Sécurité et HTTP
 
-Romain Neutron était là pour nous expliquer comment fonctionnent les headers http de sécurité. Il nous a montré les bases d'un serveur sécurisé avec les headers tels que xss-protection, frame-options, content-type-option, ainsi que la configuration sécurisée d'un nginx.
+Romain Neutron était là pour nous expliquer comment fonctionnent les headers http de sécurité. Il nous a montré les bases d'un serveur sécurisé avec les headers tels que xss-protection, frame-options, content-type-option, ainsi que la configuration sécurisée d'un nginx.
 
 <blockquote class="twitter-tweet">
 <p dir="ltr" lang="fr">Voilà ma nouvelle config de header dans mon nginx, merci <a href="https://twitter.com/romainneutron">@romainneutron</a> <a href="https://twitter.com/hashtag/symfony_live?src=hash">#symfony_live</a> <a href="https://t.co/HcuXPdk3yj">pic.twitter.com/HcuXPdk3yj</a></p>
@@ -307,13 +307,13 @@ La suite de la présentation était sur les content-security-policy, qui permett
 <blockquote class="twitter-tweet"><p>Une bonne solution pour sécurisé mon site avec les content-security-policy <a href="https://twitter.com/hashtag/symfony_live?src=hash">#symfony_live</a> avec <a href="https://twitter.com/romainneutron">@romainneutron</a> <a href="https://t.co/FjJORu3ZIG">pic.twitter.com/FjJORu3ZIG</a></p>
 <p>— Jonathan (@CaptainJojo42) <a href="https://twitter.com/CaptainJojo42/status/718428864758816768">8 avril 2016</a></p></blockquote>
 
-L'utilisation du [nelmio/NelmioSecurityBundle](https://github.com/nelmio/NelmioSecurityBundle){:rel="nofollow noreferrer"} permet de faire une migration en douceur des headers et donc de la sécurisation de vos applications.
+L'utilisation du [nelmio/NelmioSecurityBundle](https://github.com/nelmio/NelmioSecurityBundle){:rel="nofollow noreferrer"} permet de faire une migration en douceur des headers et donc de la sécurisation de vos applications.
 
 [Les slides et les avis](https://joind.in/event/symfonylive-paris-2016/scurit-et-http){:rel="nofollow noreferrer"}
 
 ### Les applications cloud native
 
-Le speaker était "fou", il parlait très vite et se perdait parfois dans ses explications. Mais ce qu'il faut retenir, c'est que applications cloud natives ne veulent pas dire applications sur des serveur cloud, il suffit de suivre des règles d'architecture :
+Le speaker était "fou", il parlait très vite et se perdait parfois dans ses explications. Mais ce qu'il faut retenir, c'est que applications cloud natives ne veulent pas dire applications sur des serveur cloud, il suffit de suivre des règles d'architecture :
 
 - avoir un CDN
 - avoir un proxy cache

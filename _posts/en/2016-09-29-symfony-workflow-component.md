@@ -39,8 +39,8 @@ Do not forget to enable the bundle in your kernel class.
 # Configuration
 
 Time has come to write our workflow configuration. We will have to define all our places (statuses / states) and available transitions.
-In this blog post, we will take a pull request status example. A pull request can have one of the following status: `opened` , `closed` , `needs_review` , `reviewed`  or `merged`.
-However, it cannot be, for instance, moved from the `merged` status without having the `reviewed`  status before. The workflow component makes sense here.
+In this blog post, we will take a pull request status example. A pull request can have one of the following status: `opened` , `closed` , `needs_review` , `reviewed`  or `merged`.
+However, it cannot be, for instance, moved from the `merged` status without having the `reviewed`  status before. The workflow component makes sense here.
 
 Here is our full workflow configuration:
 ```yaml
@@ -74,8 +74,8 @@ workflow:
                     to:   closed
 ```
 
-Here, we specify we want to use a `multiple_state`  workflow. Please not that if you want to use a simple transition from one state to another, you can use a `single_state`.
-For this example, we also have defined a `AppBundle\Entity\PullRequest` class which has a `state`  property and associated setter and getter methods (component will use these methods to manage transitions):
+Here, we specify we want to use a `multiple_state`  workflow. Please not that if you want to use a simple transition from one state to another, you can use a `single_state`.
+For this example, we also have defined a `AppBundle\Entity\PullRequest` class which has a `state`  property and associated setter and getter methods (component will use these methods to manage transitions):
 
 ```php
 <?php
@@ -123,7 +123,7 @@ The generated Graphviz will give you the following diagram:
 
 ![Workflow Graphviz](/_assets/posts/2016-09-29-symfony-workflow-component/workflow.png)
 
-This one gives you a really clear vision of your workflow and allows everyone at every level (developers, product owners, customers, ...) to understand the business logic.
+This one gives you a really clear vision of your workflow and allows everyone at every level (developers, product owners, customers, ...) to understand the business logic.
 The Workflow component implements methods that allow you to verify if a transition is applicable and to later apply it depending on the current status and to also list all enabled transitions.
 
 In order to check if you can apply a specific transition and apply it, simply use the following code:
@@ -163,7 +163,7 @@ class PullRequestController extends Controller
 }
 ```
 
-In the case you do not want to use the `can()` method, the `apply()` ``` one``` will throw an exception if the transition cannot be effectively done, so you will be able to catch exceptions on the `Symfony\Component\Workflow\Exception\LogicException` type.
+In the case you do not want to use the `can()` method, the `apply()` ``` one``` will throw an exception if the transition cannot be effectively done, so you will be able to catch exceptions on the `Symfony\Component\Workflow\Exception\LogicException` type.
 
 
 To list all enabled transitions:
@@ -176,7 +176,7 @@ Overall, the component usage is just as simple as these 3 methods. As you can se
 
 # Tune in for events!
 
-The component also dispatches multiple events, chronologically sorted as:
+The component also dispatches multiple events, chronologically sorted as:
 
 * `workflow.leave`: when our pull request will leave its current state,
 * `workflow.transition`: when the transition to the new state is launched,
@@ -188,7 +188,7 @@ If you want to do that, you have to listen to the following name: `workflow.pull
 
 Let's do better than that: you are also able to listen to a specific transition or a state for a specific workflow:
 
-* `workflow.pull_request.enter.needs_review`: is only dispatched when a `needs_review` state is defined on our pull request. We could for instance send an email to the author with the changes the reviewer has suggested,
+* `workflow.pull_request.enter.needs_review`: is only dispatched when a `needs_review` state is defined on our pull request. We could for instance send an email to the author with the changes the reviewer has suggested,
 * `workflow.pull_request.transition.merge`: will occur when the merge transition will be dispatched on our pull request.
 
 # Conclusion

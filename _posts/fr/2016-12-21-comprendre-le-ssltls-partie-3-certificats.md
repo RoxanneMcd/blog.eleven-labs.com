@@ -37,7 +37,7 @@ C’est le terme “**chaîne de confiance**” (que nous avons décrit plus hau
 
 En effet, la certification peut s'effectuer en cascade. Un certificat peut permettre d'authentifier d'autres certificats jusqu'au certificat qui sera utilisé pour la communication.
 
-Nous allons prendre par exemple le meilleur site au monde (oui c’est bientôt mon point individuel de fin d’année donc…  :p ) [https://eleven-labs.com](https://eleven-labs.com){:rel="nofollow noreferrer"}.
+Nous allons prendre par exemple le meilleur site au monde (oui c’est bientôt mon point individuel de fin d’année donc…  :p ) [https://eleven-labs.com](https://eleven-labs.com){:rel="nofollow noreferrer"}.
 
 On remarque plusieurs points :
 1. Eleven-labs n’a pas rempli toutes les infos concernant le site (tel que le type d’entreprise..... (pas bien !!!!)
@@ -118,9 +118,9 @@ Lorsque vous allez vouloir acheter un certificat auprès d’un tiers de confian
 
 Les certificats peuvent avoir une garantie allant de 10 000 € jusqu'à plus de 1 500 000 € si une faille de sécurité provient de leur certificat.
 
-Aujourd'hui, il existe deux solutions qui vous permettent d'avoir un certificat sans payer :
-1. Let's encrypt, open source, sponsorisé par des acteurs important tel que mozilla, free, ovh...   C'est la solution que je vous recommande ! Si vous souhaitez mettre en place cette solution, je vous invite à aller voir un super tuto [ici](https://vincent.composieux.fr/article/installer-configurer-et-renouveller-automatiquement-un-certificat-ssl-let-s-encrypt){:rel="nofollow noreferrer"}.
-2. Créer vous même un certificat dit **auto-signé**.
+Aujourd'hui, il existe deux solutions qui vous permettent d'avoir un certificat sans payer :
+1. Let's encrypt, open source, sponsorisé par des acteurs important tel que mozilla, free, ovh...   C'est la solution que je vous recommande ! Si vous souhaitez mettre en place cette solution, je vous invite à aller voir un super tuto [ici](https://vincent.composieux.fr/article/installer-configurer-et-renouveller-automatiquement-un-certificat-ssl-let-s-encrypt){:rel="nofollow noreferrer"}.
+2. Créer vous même un certificat dit **auto-signé**.
 
 Cependant, les certificats SSL auto-signés déclenchent des alertes de sécurité sur la plupart des navigateurs web car ils n'ont pas été vérifiés par une Autorité de Certification de confiance. La plupart du temps, ces alertes conseillent aux visiteurs de quitter la page pour des raisons de sécurité. Mais si vous passez par Let's Encrypt vous n'aurez pas ce type de problème.
 
@@ -129,6 +129,6 @@ Cependant, les certificats SSL auto-signés déclenchent des alertes de sécurit
 * Un seul domaine : suffisant pour votre site web, mais pas pour les autres services (mail, webmail, ftp, etc.)
 *exemple* : www.hatem-ben-arfa.com
 * Domaine + sous-domaine (**wildcard**) : idéal pour votre site web et les autres services.
-*exemple* : *.hatem-ben-arfa.com (www.hatem-ben-arfa.com, ftp.hatem-ben-arfa.com, ...)
+*exemple* : *.hatem-ben-arfa.com (www.hatem-ben-arfa.com, ftp.hatem-ben-arfa.com, ...)
 * Multi-domaine : généralement réservé aux grandes structures, agences web ou hébergeurs.
-*exemple* : www.hatem-ben-arfa.com, www.estcequecestbientotleweekend.com, ...
+*exemple* : www.hatem-ben-arfa.com, www.estcequecestbientotleweekend.com, ...

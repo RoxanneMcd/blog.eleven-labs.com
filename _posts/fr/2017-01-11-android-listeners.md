@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements RequesterListener
 }
 ```
 
-On a donc notre Class MainActivity qui hérite de l'interface RequesterListener et qui implémente 2 méthodes (onRequestSuccess, onRequestFailure). On va faire une dummy implementation pour vous donner une idée de comment ça fonctionne :
+On a donc notre Class MainActivity qui hérite de l'interface RequesterListener et qui implémente 2 méthodes (onRequestSuccess, onRequestFailure). On va faire une dummy implementation pour vous donner une idée de comment ça fonctionne :
 
 ```Java
 public class RequestManager {

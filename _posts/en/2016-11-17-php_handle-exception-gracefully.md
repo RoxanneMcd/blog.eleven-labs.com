@@ -178,10 +178,10 @@ On the other hand, the exception should not be placed under the mat, but it shou
 
 An exception well launched and managed correctly allows your application to be easily maintainable and makes the diagnosis of an error simpler and faster.
 
-### Other post on same subject
+### Other post on same subject
 * [PHP 7 Throwable Errors Exceptions](/en/fr/php7-throwable-error-exception/)
 
-### References
+### References
 
 -   http://wiki.c2.com/?ExceptionPatterns
 -   http://www.phptherightway.com/\#exceptions

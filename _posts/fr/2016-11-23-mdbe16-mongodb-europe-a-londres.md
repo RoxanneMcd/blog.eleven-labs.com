@@ -65,7 +65,7 @@ Toutes les nouveautés de la 3.4 <a href="https://www.mongodb.com/mongodb-3.4">i
 
 ![Prof Brian Cox]({{ site.baseurl }}/assets/2016-11-23-mdbe16/CxS5AUkWgAAgyK0.jpg)
 
-L'objectif de cette présentation était de nous montrer l’utilité de MongoDB dans le travail de cartographie de l'univers du prof Cox, et comment l’avènement du BigData aide aujourd'hui énormément les chercheurs à définir des "modèles" d’expansion de l'univers (milliards de données).
+L'objectif de cette présentation était de nous montrer l’utilité de MongoDB dans le travail de cartographie de l'univers du prof Cox, et comment l’avènement du BigData aide aujourd'hui énormément les chercheurs à définir des "modèles" d’expansion de l'univers (milliards de données).
 
 <blockquote class="twitter-tweet" data-lang="fr">
 <p dir="ltr" lang="en">Great keynote this morning with Professor Brian Cox, OBE at <a href="https://twitter.com/MongoDB">@MongoDB</a> <a href="https://twitter.com/hashtag/MDBE16?src=hash">#MDBE16</a> <a href="https://t.co/3x9SNp7VS6">pic.twitter.com/3x9SNp7VS6</a></p>
@@ -96,7 +96,7 @@ Un article sur les fonctionnalités de $graphLookup plus complet sera disponible
 
 ### Building WiredTiger
 
-Il s'agit d'un REX sur la conception du moteur WiredTiger et sur sa gestion de la mémoire.
+Il s'agit d'un REX sur la conception du moteur WiredTiger et sur sa gestion de la mémoire.
 
 <blockquote class="twitter-tweet" data-lang="fr">
 <p dir="ltr" lang="und"><a href="https://twitter.com/hashtag/MDBE16?src=hash">#MDBE16</a> <a href="https://t.co/ENF1ViV1JT">pic.twitter.com/ENF1ViV1JT</a></p>
@@ -115,7 +115,7 @@ Cette session avait pour but d'exprimer une architecture cible pour la construct
 
 ### Graph Operations with MongoDB
 
-Cette session finale avait pour but de couvrir en détail les possibilités des graphes dans MongoDB.
+Cette session finale avait pour but de couvrir en détail les possibilités des graphes dans MongoDB.
 La session a commencé par une timeline des versions MongoDB.
 
 <blockquote class="twitter-tweet" data-lang="fr">

@@ -18,13 +18,13 @@ oldCategoriesAndTags:
 permalink: /fr/votre-premiere-pwa/
 ---
 
-Le monde du web évolue. Le site web mobile est devenu le plus grand concurrent aux applications natives, et Google l'a bien compris. Si vous avez suivi la conférence de Google à Amsterdam , vous savez que l'avenir des sites web mobiles sont les Progressive Web Apps (le cas contraire, je vous invite à lire mon précédent article sur cet événement, disponible [ici](https://blog.eleven-labs.com/fr/progressive-web-apps-au-googledevsummit/)){:rel="nofollow noreferrer"}. Ça tombe bien, cet article va vous permettre de mettre en place votre première "PWA".
+Le monde du web évolue. Le site web mobile est devenu le plus grand concurrent aux applications natives, et Google l'a bien compris. Si vous avez suivi la conférence de Google à Amsterdam , vous savez que l'avenir des sites web mobiles sont les Progressive Web Apps (le cas contraire, je vous invite à lire mon précédent article sur cet événement, disponible [ici](https://blog.eleven-labs.com/fr/progressive-web-apps-au-googledevsummit/)){:rel="nofollow noreferrer"}. Ça tombe bien, cet article va vous permettre de mettre en place votre première "PWA".
 
 ### Pré-requis :
 
 Avant de commencer ce tutoriel:
 
-- Je vous invite à mettre à jour ou installer nodejs, toutes les explications pour ce faire sont disponibles [ici](https://nodejs.org/en/){:rel="nofollow noreferrer"}.
+- Je vous invite à mettre à jour ou installer nodejs, toutes les explications pour ce faire sont disponibles [ici](https://nodejs.org/en/){:rel="nofollow noreferrer"}.
 - Il vous faudra aussi une version de chrome avancée, telle que Canary, disponible [ici](https://download-chromium.appspot.com/){:rel="nofollow noreferrer"}
 - Une fois l'installation de votre chrome Canary, je vous invite à installer l'extension suivante, disponible [ici](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk){:rel="nofollow noreferrer"}
 - Durant l'ensemble du tutoriel, nous allons suivre le projet git suivant, disponible [ici](https://github.com/CaptainJojo/pwa){:rel="nofollow noreferrer"}
@@ -56,11 +56,11 @@ Vous pouvez alors naviguer dans l'application, son seul but étant d'avoir quelq
 
 ![Lighthouse Step1](/_assets/posts/2016-07-20-votre-premiere-pwa/capture-decran-2016-07-18-a-18.16.05.png)
 
-Cette extension génère une note sur 100 pour votre application. Plus la note est proche de 100, plus votre application est une progressive web app. Comme vous pouvez le lire, il y a deux choses principales qui permettent de gagner des points : la mise en oeuvre d'un service worker qui permet d'avoir une application offline et la mise en place d'un manifest notifiant le navigateur que "vous êtes une progressive web app" et donc installable sur votre téléphone.  Nous allons commencer par mettre en place le service worker.
+Cette extension génère une note sur 100 pour votre application. Plus la note est proche de 100, plus votre application est une progressive web app. Comme vous pouvez le lire, il y a deux choses principales qui permettent de gagner des points : la mise en oeuvre d'un service worker qui permet d'avoir une application offline et la mise en place d'un manifest notifiant le navigateur que "vous êtes une progressive web app" et donc installable sur votre téléphone.  Nous allons commencer par mettre en place le service worker.
 
 ### Étape 2, le service worker :
 
-Le service worker est un simple fichier js à enregistrer dans le navigateur (s'il est compatible), une fois enregistré, il peut lancer du code sans que vous soyez connecté à internet. La première chose à faire est donc d'enregistrer un fichier js dans le navigateur.
+Le service worker est un simple fichier js à enregistrer dans le navigateur (s'il est compatible), une fois enregistré, il peut lancer du code sans que vous soyez connecté à internet. La première chose à faire est donc d'enregistrer un fichier js dans le navigateur.
 Nous allons tout d'abord créer un fichier vide sw.js dans le dossier public.
 
 ```sh
@@ -93,8 +93,8 @@ Bravo, vous avez gagné des points ! Passons à la suite.
 
 ### Étape 3, le offline :
 
-Maintenant que vous avez enregistré votre service nous allons mettre en cache le site pour vous permettre d'avoir un site visible en offline.
-Pour cela, il suffit d'agrémenter le fichier sw.js. Si vous lisez la norme du W3C sur le service worker, disponible [ici](https://www.w3.org/TR/service-workers/){:rel="nofollow noreferrer"}, vous verrez qu'il fonctionne comme suit : il lit des événements javascript et, en fonction de ce qui a été lu, il effectue une action. Nous allons commencer par l’événement 'install' qui va vous permettre de mettre en cache l'ensemble des pages statiques de votre site. Voici le code à ajouter dans le fichier public/sw.js :
+Maintenant que vous avez enregistré votre service nous allons mettre en cache le site pour vous permettre d'avoir un site visible en offline.
+Pour cela, il suffit d'agrémenter le fichier sw.js. Si vous lisez la norme du W3C sur le service worker, disponible [ici](https://www.w3.org/TR/service-workers/){:rel="nofollow noreferrer"}, vous verrez qu'il fonctionne comme suit : il lit des événements javascript et, en fonction de ce qui a été lu, il effectue une action. Nous allons commencer par l’événement 'install' qui va vous permettre de mettre en cache l'ensemble des pages statiques de votre site. Voici le code à ajouter dans le fichier public/sw.js :
 
 ```javascript
 self.addEventListener('install', e =>; {
@@ -119,9 +119,9 @@ self.addEventListener('install', e =>; {
 ```
 
 Comme vous pouvez le lire, quand l’événement est lancé, on ouvre un cache au nom 'pwa' et on lui ajoute les fichiers statiques.
-Si vous relancez l'application, vous pouvez alors mettre en "offline" dans l'outil de développement puis dans l'onglet applications, bien que cela ne devrait pas encore fonctionner car nous n'avons pas pris en compte les appels serveur. Pour cela, vous allez récupérer l’événement 'fetch' qui permet de récupérer ces appels serveurs en question.
+Si vous relancez l'application, vous pouvez alors mettre en "offline" dans l'outil de développement puis dans l'onglet applications, bien que cela ne devrait pas encore fonctionner car nous n'avons pas pris en compte les appels serveur. Pour cela, vous allez récupérer l’événement 'fetch' qui permet de récupérer ces appels serveurs en question.
 
-Vous ajoutez dans le fichier public/sw.js, le code suivant :
+Vous ajoutez dans le fichier public/sw.js, le code suivant :
 
 ```javascript
 self.addEventListener('fetch', event =>; {
@@ -133,7 +133,7 @@ self.addEventListener('fetch', event =>; {
 });
 ```
 
-Ce que l'on fait est simple, vous récupérez chaque requête et la mettez dans le cache.
+Ce que l'on fait est simple, vous récupérez chaque requête et la mettez dans le cache.
 Vous retrouverez cette étape [ici](https://github.com/CaptainJojo/pwa/compare/step1-register-sw...step2-service-worker-offline){:rel="nofollow noreferrer"}.
 
 Si vous relancez l'application, vous pouvez voir dans l'outil de développement, onglet application, un lien pour voir ce que contient votre cache (Cache Storage), vous y retrouvez l'ensemble des fichiers statiques.
@@ -144,13 +144,13 @@ Puis, encore une fois, fermez l'outil de développement, et relancez LightHouse.
 
 ![LightHouse - Offline](/_assets/posts/2016-07-20-votre-premiere-pwa/capture-decran-2016-07-18-a-19.57.34.png)
 
-Vous êtes sur la bonne voie, mais il y a une méthode encore meilleure pour initialiser votre cache.
+Vous êtes sur la bonne voie, mais il y a une méthode encore meilleure pour initialiser votre cache.
 
 ### Étape 4, PreCache du service worker :
 
 Comme vous avez pu le voir, il est très fastidieux de mettre chaque fichier statique dans le service worker, Google y a pensé et a mis en place plusieurs outils pour faciliter le développement.
 
-Vous allez utiliser le projet sw-précache disponible sur [github](https://github.com/GoogleChrome/sw-precache), ce dernier permet de générer le service worker via un fichier [Gulp](http://gulpjs.com/){:rel="nofollow noreferrer"}.
+Vous allez utiliser le projet sw-précache disponible sur [github](https://github.com/GoogleChrome/sw-precache), ce dernier permet de générer le service worker via un fichier [Gulp](http://gulpjs.com/){:rel="nofollow noreferrer"}.
 
 Vous n'avez plus qu'à ajouter dans le package.json.
 
@@ -211,7 +211,7 @@ Vous pouvez retrouver l'étape [ici](https://github.com/CaptainJojo/pwa/compare/
 
 ### Étape 5, le manifest :
 
-La mise en place du manifest est une étape simple mais qui permet de signifier aux navigateurs que vous avez créé votre première PWA.  Vous pouvez retrouver la spécification sur le site [W3C](https://w3c.github.io/manifest/){:rel="nofollow noreferrer"}.
+La mise en place du manifest est une étape simple mais qui permet de signifier aux navigateurs que vous avez créé votre première PWA.  Vous pouvez retrouver la spécification sur le site [W3C](https://w3c.github.io/manifest/){:rel="nofollow noreferrer"}.
 
 Je vous donne l'exemple typique que l'on trouve dans tous les bons tutoriels.
 
@@ -243,7 +243,7 @@ Je vous donne l'exemple typique que l'on trouve dans tous les bons tutoriels.
 }
 ```
 
-Il est très lisible puisque vous y trouvez le nom de votre application, les icônes utilisés lors de l'installation sur le téléphone et les couleurs pour le splashScreen.  La clé 'display' vous permet de choisir l'orientation du téléphone lors de l'installation, soit horizontale, verticale ou 'standalone' qui permet de laisser l'utilisateur choisir.
+Il est très lisible puisque vous y trouvez le nom de votre application, les icônes utilisés lors de l'installation sur le téléphone et les couleurs pour le splashScreen.  La clé 'display' vous permet de choisir l'orientation du téléphone lors de l'installation, soit horizontale, verticale ou 'standalone' qui permet de laisser l'utilisateur choisir.
 
 Une fois le fichier rempli, vous devez signifier son emplacement pour le navigateur. Dans le header de la page, il faut ajouter dans le fichier /public/index.html :
 
@@ -263,4 +263,4 @@ Et encore une fois, fermez l'outil de développement et lancez l'extension Light
 
 Vous y êtes, votre application est une Progressive Web App !
 En conclusion, ce n'est pas compliqué de mettre en place une PWA, maintenant il faut jouer avec, tester le cache, etc... Il existe d'autres fonctionnalités sympa comme la mise en place des push notifications, le fait de contrôler le bluetooth...
-Pour en apprendre encore plus, vous pouvez trouver des tutoriels super intéressants dont je me suis inspiré, chez [Google](https://codelabs.developers.google.com/){:rel="nofollow noreferrer"}.
+Pour en apprendre encore plus, vous pouvez trouver des tutoriels super intéressants dont je me suis inspiré, chez [Google](https://codelabs.developers.google.com/){:rel="nofollow noreferrer"}.

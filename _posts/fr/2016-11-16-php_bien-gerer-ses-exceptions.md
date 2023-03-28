@@ -180,10 +180,10 @@ Par contre, l'exception ne doit pas être mise sous le tapis, mais elle doit êt
 
 Une exception bien lancée et gérée correctement permet à votre application d'être facilement maintenable et rend le diagnostic d'une erreur plus simple et rapide.
 
-### Autre article sur le même sujet
+### Autre article sur le même sujet
 * [PHP 7 Throwable Errors Exceptions](/fr/php7-throwable-error-exception/)
 
-### Références
+### Références
 
 -   http://wiki.c2.com/?ExceptionPatterns
 -   http://www.phptherightway.com/\#exceptions

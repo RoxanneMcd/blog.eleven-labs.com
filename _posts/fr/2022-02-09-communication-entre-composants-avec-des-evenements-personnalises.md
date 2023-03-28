@@ -166,7 +166,7 @@ export const useCart = (): UseCart => {
             } else {
                 cartItemsDraft[cartItemIndex].quantity++;
             }
-        } else {
+        } else {
             cartItemsDraft.push({ ...cartItem, quantity: 1 });
         }
         setCartItems(cartItemsDraft);
@@ -244,7 +244,7 @@ export const AddToCartButtonContainer: React.FC<AddToCartButtonContainerProps> =
 
     return (
         <AddToCartButton
-            cartItem={cartItems.find(cartItem => cartItem.id === product.id) || { ...product, quantity: 0 }}
+            cartItem={cartItems.find(cartItem => cartItem.id === product.id) || { ...product, quantity: 0 }}
             updateCart={updateCart}
         />
     );

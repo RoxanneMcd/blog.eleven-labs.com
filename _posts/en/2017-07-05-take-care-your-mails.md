@@ -46,7 +46,7 @@ The only way to communicate with your mailbox and especially Gmail or Inbox is H
 
 We all know that developing e-mails is not the simplest thing in the world. Setting up a development environment can be very difficult and time consuming. But no worries, Google thought about it!
 
-Just go to [https://script.google.com](https://script.google.com){:rel="nofollow noreferrer"} and put the following script in the Code.gs  file
+Just go to [https://script.google.com](https://script.google.com){:rel="nofollow noreferrer"} and put the following script in the Code.gs  file
 
 
 ```javascript
@@ -60,7 +60,7 @@ function testSchemas() {
   });
 }
 ```
-Then add a ```TEMPLATE NAME```  file containing the html of your email.
+Then add a ```TEMPLATE NAME```  file containing the html of your email.
 
 ```html
 <html>
@@ -147,7 +147,7 @@ Now if you "run" your script, Google will ask you the right to send you an email
 </html>
 ```
 
-#### A call-to-action
+#### A call-to-action
 
 ```html
 <html>

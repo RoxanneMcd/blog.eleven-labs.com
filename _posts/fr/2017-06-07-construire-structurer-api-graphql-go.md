@@ -37,27 +37,27 @@ Ainsi, voici l'arborescence que je vous propose pour notre API :
 ```bash
 .
 ├── app
-│   ├── config.go
-│   ├── config.json
-│   └── config_test.go
+│   ├── config.go
+│   ├── config.json
+│   └── config_test.go
 ├── security
-│   ├── security.go
-│   └── security_test.go
+│   ├── security.go
+│   └── security_test.go
 ├── mutations
-│   ├── mutations.go
-│   ├── mutations_test.go
-│   ├── user.go
-│   └── user_test.go
+│   ├── mutations.go
+│   ├── mutations_test.go
+│   ├── user.go
+│   └── user_test.go
 ├── queries
-│   ├── queries.go
-│   ├── queries_test.go
-│   ├── user.go
-│   └── user_test.go
+│   ├── queries.go
+│   ├── queries_test.go
+│   ├── user.go
+│   └── user_test.go
 ├── types
-│   ├── role.go
-│   ├── role_test.go
-│   ├── user.go
-│   └── user_test.go
+│   ├── role.go
+│   ├── role_test.go
+│   ├── user.go
+│   └── user_test.go
 └── main.go
 ```
 

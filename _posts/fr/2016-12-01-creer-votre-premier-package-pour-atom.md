@@ -20,7 +20,7 @@ permalink: /fr/creer-votre-premier-package-pour-atom/
 
 # Introduction à Atom
 
-[Atom](https://atom.io) est un éditeur de texte (principalement utilisé pour du code){:rel="nofollow noreferrer"} multi-plateforme développé par la société GitHub et qui s'appuie sur un autre framework développé par GitHub : <a href="http://electron.atom.io/">Electron</a>, qui permet de développer des applications natives pour chaque système d'exploitation à partir de code Javascript.
+[Atom](https://atom.io) est un éditeur de texte (principalement utilisé pour du code){:rel="nofollow noreferrer"} multi-plateforme développé par la société GitHub et qui s'appuie sur un autre framework développé par GitHub : <a href="http://electron.atom.io/">Electron</a>, qui permet de développer des applications natives pour chaque système d'exploitation à partir de code Javascript.
 
 Le grand intérêt d'Atom est qu'il peut être étendu très facilement avec un peu de code Javascript et c'est ce que nous allons voir dans cet article. Ainsi, tout le monde peut écrire son "package" pour Atom.
 
@@ -31,10 +31,10 @@ Si toutefois vous ne trouvez pas votre bonheur dans les packages déjà proposé
 
 # Générer son premier package
 
-Pour créer votre premier package, rassurez-vous, vous n'allez pas partir de rien. En effet, nous allons utiliser la commande fournie par le package `Package Generator` natif à Atom.
-Pour se faire, il vous suffira de naviguer dans : `Packages` -> `Package Generator` -> `Generate Atom Package`.
+Pour créer votre premier package, rassurez-vous, vous n'allez pas partir de rien. En effet, nous allons utiliser la commande fournie par le package `Package Generator` natif à Atom.
+Pour se faire, il vous suffira de naviguer dans : `Packages` -> `Package Generator` -> `Generate Atom Package`.
 
-Lors de la génération, vous pouvez choisir le langage que vous souhaitez utiliser pour développer votre package, entre `Javascript` et `Coffeescript`. Cet article est rédigé en Javascript.
+Lors de la génération, vous pouvez choisir le langage que vous souhaitez utiliser pour développer votre package, entre `Javascript` et `Coffeescript`. Cet article est rédigé en Javascript.
 
 Atom vous ouvrira alors une nouvelle fenêtre à l'intérieur de votre nouveau package, nommé `my-package`.
 
@@ -61,10 +61,10 @@ Nous allons maintenant détailler la structure par défaut du projet :
 └── my-package.less
 ```
 
-Le premier élément à renseigner est le fichier `package.json`  qui doit contenir les informations relatives à votre package tel que son nom, sa version, license, mots clés pour trouver votre package et également ses librairies de dépendances.
-Notez également la présence dans ce fichier d'une section `activationCommands`  qui vous permet de définir la commande exécutée lors de l'activation de votre package.
+Le premier élément à renseigner est le fichier `package.json`  qui doit contenir les informations relatives à votre package tel que son nom, sa version, license, mots clés pour trouver votre package et également ses librairies de dépendances.
+Notez également la présence dans ce fichier d'une section `activationCommands`  qui vous permet de définir la commande exécutée lors de l'activation de votre package.
 
-Nous avons ensuite le fichier `keymaps/my-package.json`  qui vous permet d'enregistrer des raccourcis clavier dans votre application, de façon très simple :
+Nous avons ensuite le fichier `keymaps/my-package.json`  qui vous permet d'enregistrer des raccourcis clavier dans votre application, de façon très simple :
 
 ```json
 {
@@ -75,9 +75,9 @@ Nous avons ensuite le fichier `keymaps/my-package.json`  qui vous permet d'enre
 ```
 
 Passons maintenant au point d'entrée de votre package. Il s'agit de ce qui se trouve dans `lib/my-package.js`.
-Dans ce fichier est exporté un objet par défaut qui contient une propriété `subscriptions`  et des méthodes `activate()`  et `deactivate()`  notamment.
+Dans ce fichier est exporté un objet par défaut qui contient une propriété `subscriptions`  et des méthodes `activate()`  et `deactivate()`  notamment.
 
-Lors de l'activation de notre package (dans la méthode `activate()` ), nous allons enregistrer dans notre propriété `subscriptions`  un objet de type [CompositeDisposable](https://atom.io/docs/api/latest/CompositeDisposable){:rel="nofollow noreferrer"}  qui nous permettra d'ajouter et d'éventuellement plus tard, supprimer des commandes disponibles dans notre package :
+Lors de l'activation de notre package (dans la méthode `activate()` ), nous allons enregistrer dans notre propriété `subscriptions`  un objet de type [CompositeDisposable](https://atom.io/docs/api/latest/CompositeDisposable){:rel="nofollow noreferrer"}  qui nous permettra d'ajouter et d'éventuellement plus tard, supprimer des commandes disponibles dans notre package :
 
 ```js
 activate(state) {
@@ -90,14 +90,14 @@ activate(state) {
 
 Notre commande étant enregistrée, nous pouvons dès maintenant l'exécuter en ouvrant la palette de commande : `My Package: Toggle`.
 
-Celle-ci va exécuter le code contenu dans la méthode `toggle()`  de votre classe, soit dans le package par défaut, afficher une petite fenêtre en haut de l'écran.
+Celle-ci va exécuter le code contenu dans la méthode `toggle()`  de votre classe, soit dans le package par défaut, afficher une petite fenêtre en haut de l'écran.
 Vous pouvez ajouter autant de commandes que vous le souhaitez et surtout, découper votre code comme vous le sentez.
 
 ## Ajouter des paramètres dans mon package
 
 Vous avez la possibilité d'ajouter des paramètres à votre package et ceci est rendu possible grâce au composant [Config](https://atom.io/docs/api/latest/Config){:rel="nofollow noreferrer"}</a>.
 
-Il vous suffira d'ajouter une propriété `config`  à votre classe en définissant un objet avec la définition de chaque élément que vous souhaitez voir apparaître dans vos paramètres :
+Il vous suffira d'ajouter une propriété `config`  à votre classe en définissant un objet avec la définition de chaque élément que vous souhaitez voir apparaître dans vos paramètres :
 
 ```json
 config: {
@@ -109,8 +109,8 @@ config: {
 }
 ```
 
-La configuration offre un grand nombre de valeurs disponibles (`boolean` , `color` , `integer` , `string` , ...) ce qui permet de laisser un grand nombre de choix à vos utilisateurs.
-Les paramètres de votre package apparaîtront alors pour votre package, sous Atom :
+La configuration offre un grand nombre de valeurs disponibles (`boolean` , `color` , `integer` , `string` , ...) ce qui permet de laisser un grand nombre de choix à vos utilisateurs.
+Les paramètres de votre package apparaîtront alors pour votre package, sous Atom :
 
 ![Gitlab URL Parameter](/_assets/posts/2016-12-05-create-atom-package/gitlab-url.png)
 
@@ -126,7 +126,7 @@ Vous pouvez maintenant commencer à développer votre package, nous allons donc 
 
 ## TextEditor : Agissez sur l'éditeur de texte
 
-Avec le composant `TextEditor` , vous allez pouvoir insérer du texte dans votre éditeur, enregistrer le fichier, jouer sur l'historique des actions (aller en avant ou arrière), déplacer le curseur dans l'éditeur, copier/coller dans le presse-papier, jouer sur l'indentation, scroller, etc ...
+Avec le composant `TextEditor` , vous allez pouvoir insérer du texte dans votre éditeur, enregistrer le fichier, jouer sur l'historique des actions (aller en avant ou arrière), déplacer le curseur dans l'éditeur, copier/coller dans le presse-papier, jouer sur l'indentation, scroller, etc ...
 Quelques commandes en exemple, ici pour insérer du texte à une coordonnée donnée et enregistrer le fichier :
 
 ```js
@@ -138,7 +138,7 @@ editor.save();
 ## ViewRegistry et View : Créez et affichez votre propre fenêtre
 
 Ces composants vont vous permettre de créer votre fenêtre à l'intérieur d'Atom et de l'afficher.
-Vous disposez d'un exemple d'utilisation du composant `View`  dans le package généré par défaut :
+Vous disposez d'un exemple d'utilisation du composant `View`  dans le package généré par défaut :
 
 ```js
 export default class MyPackageView {
@@ -213,13 +213,13 @@ describe('MyPackageView', () => {
 
 Les tests Jasmine doivent être structurés de la façon suivante :
 
-* `describe()`  : Une suite de test commence par une fonction describe qui prend un nom en premier argument et une fonction en deuxième argument,
-* `it()`  : Une spécification est ajoutée par ce mot clé, il doit être contenu à l'intérieur d'une suite de test,
-* `expect()`  : Il s'agit d'une assertion, lorsqu'on s'attend à avoir un résultat donné.
+* `describe()`  : Une suite de test commence par une fonction describe qui prend un nom en premier argument et une fonction en deuxième argument,
+* `it()`  : Une spécification est ajoutée par ce mot clé, il doit être contenu à l'intérieur d'une suite de test,
+* `expect()`  : Il s'agit d'une assertion, lorsqu'on s'attend à avoir un résultat donné.
 
 C'est maintenant à vous de jouer et de tester votre logique applicative.
 
-Vous pouvez lancer les specs via le menu d'Atom : `View`  -> `Packages`  -> `Run Package Specs`.
+Vous pouvez lancer les specs via le menu d'Atom : `View`  -> `Packages`  -> `Run Package Specs`.
 
 # Publier votre package
 

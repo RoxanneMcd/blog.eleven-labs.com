@@ -115,7 +115,7 @@ class ArticleService
 }
 ```
 
-En regardant ce que nous venons d'écrire, on pourrait se dire « cela m'a l'air assez classique, quel est le problème ? ». Si nous observons d'un point de vue plus conceptuel, est-ce que cela a du sens ? Est-ce que c'est logique de créer cet objet vide `new Article()` avec aucune propriété définie en premier lieu ? Puis de définir un titre, puis un contenu ? Je doute que vous soyez confortable avec l'idée de regarder une page d'article vide, sans contenu.
+En regardant ce que nous venons d'écrire, on pourrait se dire « cela m'a l'air assez classique, quel est le problème ? ». Si nous observons d'un point de vue plus conceptuel, est-ce que cela a du sens ? Est-ce que c'est logique de créer cet objet vide `new Article()` avec aucune propriété définie en premier lieu ? Puis de définir un titre, puis un contenu ? Je doute que vous soyez confortable avec l'idée de regarder une page d'article vide, sans contenu.
 
 ### Le temps passe
 

@@ -15,7 +15,7 @@ oldCategoriesAndTags:
 permalink: /fr/prenez-soin-de-vos-emails/
 ---
 
-Le moyen de communication le plus répandu entre un prestataire et son client, c'est l'email. Pourtant, peu de gens prennent soin de les personnaliser. C'est dommage, car il existe de nombreux tips sympas qui permettent de les rendre plus qualitatifs. Bien sûr, tout cela passe par Google... mais qui n'utilise pas Gmail aujourd'hui ?
+Le moyen de communication le plus répandu entre un prestataire et son client, c'est l'email. Pourtant, peu de gens prennent soin de les personnaliser. C'est dommage, car il existe de nombreux tips sympas qui permettent de les rendre plus qualitatifs. Bien sûr, tout cela passe par Google... mais qui n'utilise pas Gmail aujourd'hui ?
 
 ### À quoi cela ressemble-t-il ?
 
@@ -35,13 +35,13 @@ Vous avez dû le voir dans votre boite Gmail, dans certains cas, vos mails ont u
 
 ### Comment ça marche ?
 
-La seule façon de communiquer avec votre boite mail et en particulier Gmail ou Inbox c'est l'HTML. Pour ajouter les informations complémentaires afin que Gmail comprenne ce que vous voulez, il faut ajouter un *[schema.org](http://schema.org/)*. Eh oui, c'est aussi simple que cela, comme pour améliorer votre [seo](https://developers.google.com/search/docs/guides/){:rel="nofollow noreferrer"}, Google utilise schema.org.
+La seule façon de communiquer avec votre boite mail et en particulier Gmail ou Inbox c'est l'HTML. Pour ajouter les informations complémentaires afin que Gmail comprenne ce que vous voulez, il faut ajouter un *[schema.org](http://schema.org/)*. Eh oui, c'est aussi simple que cela, comme pour améliorer votre [seo](https://developers.google.com/search/docs/guides/){:rel="nofollow noreferrer"}, Google utilise schema.org.
 
 ### Comment tester ?
 
 On le sait tous, développer des mails, ce n'est pas ce qui est le plus simple. Mettre en place un environnement de développement peut s'avérer très galère et assez long. Mais pas d'inquiétude, Google y a pensé !
 
-Il suffit de se rendre sur [https://script.google.com](https://script.google.com){:rel="nofollow noreferrer"} et de mettre le script suivant dans le fichier Code.gs
+Il suffit de se rendre sur [https://script.google.com](https://script.google.com){:rel="nofollow noreferrer"} et de mettre le script suivant dans le fichier Code.gs
 
 ```javascript
 function testSchemas() {
@@ -55,7 +55,7 @@ function testSchemas() {
 }
 ```
 
-Puis d'ajouter un fichier ```NOM DU TEMPLATE``` contenant l'html de votre email.
+Puis d'ajouter un fichier ```NOM DU TEMPLATE``` contenant l'html de votre email.
 
 ```html
 <html>
@@ -69,7 +69,7 @@ Puis d'ajouter un fichier ```NOM DU TEMPLATE``` contenant l'html de votre email
 
 Maintenant si vous "runnez" votre script, Google va vous demander le droit de vous envoyer un email et vous allez le recevoir.
 
-### Développer les exemples
+### Développer les exemples
 
 #### Réservation d'un événement
 
@@ -181,4 +181,4 @@ Je vous invite à taper *'mes vols', 'mes commandes', 'mes réservations',*  vou
 
 ### Conclusion
 
-Dans le monde, plus de 2,5 milliards d'emails sont envoyés chaque année, et c'est certainement le format que vous favorisez pour communiquer avec vos clients. Donc autant faire en sorte qu'ils sortent du lot ! Google propose un grand nombre d'améliorations pour vos mails. Je vous invite à regarder ceci [https://developers.google.com/gmail/markup/](https://developers.google.com/gmail/markup/){:rel="nofollow noreferrer"}, je suis sûr que vous trouverez votre bonheur.
+Dans le monde, plus de 2,5 milliards d'emails sont envoyés chaque année, et c'est certainement le format que vous favorisez pour communiquer avec vos clients. Donc autant faire en sorte qu'ils sortent du lot ! Google propose un grand nombre d'améliorations pour vos mails. Je vous invite à regarder ceci [https://developers.google.com/gmail/markup/](https://developers.google.com/gmail/markup/){:rel="nofollow noreferrer"}, je suis sûr que vous trouverez votre bonheur.

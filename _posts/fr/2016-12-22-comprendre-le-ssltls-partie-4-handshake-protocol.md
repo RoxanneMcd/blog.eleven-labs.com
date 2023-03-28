@@ -32,7 +32,7 @@ Traduit “poignée de main” en Français, ce protocole permet au serveur et a
 2. négocier :
     1. les algorithmes de chiffrement ;
     2. les algorithmes de MAC (Message Authentification Code) ;
-    3. les clés symétriques qui vont servir au chiffrement  avant que l'application ne transmette son premier octet.
+    3. les clés symétriques qui vont servir au chiffrement  avant que l'application ne transmette son premier octet.
 
 Voici en détails comment se déroule le handshake, dans l'ordre chronologique :
 

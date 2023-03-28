@@ -47,7 +47,7 @@ En effet, HTTP/2 va vous permettre d'apporter les fonctionnalités que nous allo
 
 Si le chiffrement n'est `pas obligatoire`, certains navigateurs ne supportent HTTP/2 qu'avec la méthode de chiffrement TLS associée, et ce n'est pas plus mal car étant donné qu'il est de plus en plus simple d'obtenir un certificat SSL de nos jours, cela ne pose donc aucun soucis et vous permet de sécuriser davantage vos applications.
 
-Si vous n'utilisez pas le chiffrement, le diminutif donné au protocole est `h2c` . Ce sera  `h2`  si vous utilisez le chiffrement.
+Si vous n'utilisez pas le chiffrement, le diminutif donné au protocole est `h2c` . Ce sera  `h2`  si vous utilisez le chiffrement.
 
 Si vous souhaitez plus d'informations sur la configuration du protocole TLS afin d'[améliorer la sécurité des échanges SSL](https://vincent.composieux.fr/article/ameliorer-la-securite-des-echanges-ssl-effectues-par-votre-serveur){:rel="nofollow noreferrer"}, je vous invite à lire mon article sur le sujet.
 
@@ -57,9 +57,9 @@ Si HTTP/1 chargeait les ressources les unes après les autres, comme en décrit 
 
 ![Waterfall HTTP](/_assets/posts/2017-04-12-http2-future-present/waterfall_http.jpg)
 
-Ici, le temps passé en vert correspond au temps d'attente avant le chargement de la ressource, le temps passé en violet correspond au temps d'attente de chargement de la ressource (TTFB - Time To First Byte) et enfin le temps en gris correspond au temps de réception de la ressource.
+Ici, le temps passé en vert correspond au temps d'attente avant le chargement de la ressource, le temps passé en violet correspond au temps d'attente de chargement de la ressource (TTFB - Time To First Byte) et enfin le temps en gris correspond au temps de réception de la ressource.
 
-Voici à quoi ressemble le chargement des ressources sous le protocole HTTP/2 :
+Voici à quoi ressemble le chargement des ressources sous le protocole HTTP/2 :
 
 ![Waterfall HTTP/2?](/_assets/posts/2017-04-12-http2-future-present/waterfall_http2.jpg)
 
@@ -87,10 +87,10 @@ accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0
 accept-encoding: gzip, deflate, sdch, br
 ```
 
-Lors de ma prochaine requête, les headers `:authority` , `:method` , `:scheme` , `accept`  et `accept-encoding` ne vont potentiellement pas changer.
+Lors de ma prochaine requête, les headers `:authority` , `:method` , `:scheme` , `accept`  et `accept-encoding` ne vont potentiellement pas changer.
 HTTP/2 effectuera alors une compression sur ceux-ci.
 
-Pour vous rendre compte de la compression des headers, je vous invite à utiliser l'outil [h2load](https://nghttp2.org/documentation/h2load-howto.html){:rel="nofollow noreferrer"} permettant d'effectuer un benchmark des appels HTTP/2, en effectuant ici deux requêtes sur votre application :
+Pour vous rendre compte de la compression des headers, je vous invite à utiliser l'outil [h2load](https://nghttp2.org/documentation/h2load-howto.html){:rel="nofollow noreferrer"} permettant d'effectuer un benchmark des appels HTTP/2, en effectuant ici deux requêtes sur votre application :
 
 ```bash
 $ h2load https://vincent.composieux.fr -n 2 | grep traffic
@@ -111,7 +111,7 @@ Afin de pré-charger une ressource (preload), il vous suffit d'envoyer un header
 Link: </fonts/myfont.woff2>;rel="preload";as="font"
 ```
 
-Vous pouvez bien sûr définir plusieurs headers `Link` , et les attributs `as` peuvent prendre les valeurs suivantes : `font` , `image` , `style`  ou `script`.
+Vous pouvez bien sûr définir plusieurs headers `Link` , et les attributs `as` peuvent prendre les valeurs suivantes : `font` , `image` , `style`  ou `script`.
 
 Il est également possible d'utiliser le markup HTML pour précharger vos ressources :
 
@@ -134,7 +134,7 @@ Notez également qu'un nouveau composant Symfony est à l'étude sur [cette Pull
 
 ## Server Hints (prefetch)
 
-Notez que cette méthode n'est pas liée à HTTP/2 car disponible bien avant mais il est toutefois intéressant d'aborder la différence entre ces deux méthodes `prefetch`  et `preload`.
+Notez que cette méthode n'est pas liée à HTTP/2 car disponible bien avant mais il est toutefois intéressant d'aborder la différence entre ces deux méthodes `prefetch`  et `preload`.
 
 Si preload va en effet charger une ressource dans le `cache du navigateur`, prefetch lui, va s'assurer que le client ne l'a pas déjà à disposition et récupérera la ressource `uniquement si le client en a besoin`.
 
@@ -146,7 +146,7 @@ Link: </fonts/myfont.woff2>; rel=prefetch
 
 # Utiliser le protocole HTTP/2
 
-Si vous utilisez nginx, le protocole HTTP/2 est supporté depuis la `version 1.9.5` et il vous suffit simplement de spécifier dans l'attribut `listen`  que vous souhaitez utiliser : "http2"
+Si vous utilisez nginx, le protocole HTTP/2 est supporté depuis la `version 1.9.5` et il vous suffit simplement de spécifier dans l'attribut `listen`  que vous souhaitez utiliser : "http2"
 Exemple :
 
 ```lua
@@ -155,7 +155,7 @@ server {
     ...
 ```
 
-Afin de vous assurer que HTTP/2 est bien activé sur votre serveur, je vous invite à taper `nginx -V`  afin de vous assurer que vous disposiez bien de l'option de compilation `--with-http_v2_module`  ainsi qu'à vérifier que votre version d'OpenSSL utilisée par nginx est récente.
+Afin de vous assurer que HTTP/2 est bien activé sur votre serveur, je vous invite à taper `nginx -V`  afin de vous assurer que vous disposiez bien de l'option de compilation `--with-http_v2_module`  ainsi qu'à vérifier que votre version d'OpenSSL utilisée par nginx est récente.
 
 À partir de là, vous n'avez plus qu'à redémarrer votre serveur web afin de profiter du protocole.
 
@@ -163,11 +163,11 @@ Afin de vous assurer que HTTP/2 est bien activé sur votre serveur, je vous invi
 
 Côté Apache, les `versions 2.4.12` et supérieures supportent également le protocole.
 
-Globalement, l'activation du protocole HTTP/2 est assez simple. Si vous venez du monde Javascript, un package [http2](https://www.npmjs.com/package/http2){:rel="nofollow noreferrer"} est également disponible afin d'instancier un serveur `express` avec la nouvelle version du protocole.
+Globalement, l'activation du protocole HTTP/2 est assez simple. Si vous venez du monde Javascript, un package [http2](https://www.npmjs.com/package/http2){:rel="nofollow noreferrer"} est également disponible afin d'instancier un serveur `express` avec la nouvelle version du protocole.
 
 # Conclusion
 
 HTTP/2 peut être dès maintenant utilisé sur vos applications web et ne peut faire que du bien à celles-ci sur plusieurs aspects (performances, SEO, chiffrement, ...).
 Sa facilité de mise en place et son support sur un grand nombre de technologies est également un atout majeur qui devrait vous aider à passer le cap !
 
-Et après ? Aucun travail n'est actuellement commencé au sujet d'HTTP/3 mais l'avenir et les technologies nous réserveront bien une troisième version de ce protocole tant utilisé !
+Et après ? Aucun travail n'est actuellement commencé au sujet d'HTTP/3 mais l'avenir et les technologies nous réserveront bien une troisième version de ce protocole tant utilisé !

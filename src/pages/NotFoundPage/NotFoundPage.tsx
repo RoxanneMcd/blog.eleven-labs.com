@@ -15,7 +15,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
   description,
 }) => (
   <>
-    <Container as="main">
+    <Container>
       <Link {...backLinkProps} icon="arrow-back" size="m">
         {label}
       </Link>

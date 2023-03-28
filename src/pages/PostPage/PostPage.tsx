@@ -1,8 +1,7 @@
-import { AsProps, Link } from '@eleven-labs/design-system';
+import { AsProps, Box, Link } from '@eleven-labs/design-system';
 import React from 'react';
 
 import { Container, Divider, NewsletterBlock, NewsletterBlockProps } from '@/components';
-import { MarkdownToHtml } from '@/components/MarkdownToHtml';
 
 import { PostFooter, PostFooterProps } from './PostFooter';
 import { PostHeader, PostHeaderProps } from './PostHeader';
@@ -25,13 +24,13 @@ export const PostPage: React.FC<PostPageProps> = ({
   relatedPostList,
   newsletterBlock,
 }) => (
-  <Container as="main">
+  <Container>
     <Link {...backLinkProps} icon="arrow-back" size="m">
       {label}
     </Link>
     <PostHeader {...header} />
     <Divider mt="xs" bg="light-grey" />
-    <MarkdownToHtml as="section" content={content} />
+    <Box as="section" dangerouslySetInnerHTML={{ __html: content }} />
     <Divider mt="xs" bg="light-grey" />
     <PostFooter {...footer} />
     <NewsletterBlock my={{ xs: 'l' }} {...newsletterBlock} />
