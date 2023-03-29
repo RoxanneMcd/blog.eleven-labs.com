@@ -48,6 +48,7 @@ export const useFooterContainer = (): LayoutTemplateProps['footer'] => {
       eventLabel: socialNetwork.iconName,
       iconName: socialNetwork.iconName,
       to: socialNetwork.url,
+      'aria-label': socialNetwork.label,
     })),
     languageLinks: AUTHORIZED_LANGUAGES.map((currentLang) => {
       const isActive = currentLang === i18n.language;
